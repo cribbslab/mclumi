@@ -45,7 +45,7 @@
       <recent name="D:\Document\Programming\Python\deepbio\symphony\github\mclumi\mclumi\download\sra" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.DedupBasic">
+  <component name="RunManager" selected="Shell Script.mclumi.sh">
     <configuration name="DedupBasic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="mclumi" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -134,35 +134,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Read_umitools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="mclumi" />
+    <configuration name="mclumi.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/shell/sc.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/shell" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mclumi/align" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mclumi/align/Read_umitools.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Shell Script.mclumi.sh" />
         <item itemvalue="Python.DedupBasic" />
         <item itemvalue="Python.Fixed" />
         <item itemvalue="Python.Graph" />
         <item itemvalue="Python.DedupPos" />
-        <item itemvalue="Python.Read_umitools" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +172,7 @@
       <workItem from="1634115373963" duration="227373000" />
       <workItem from="1634864283790" duration="34000" />
       <workItem from="1634864452235" duration="52000" />
-      <workItem from="1634864541219" duration="21412000" />
+      <workItem from="1634864541219" duration="28872000" />
     </task>
     <servers />
   </component>

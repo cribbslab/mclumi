@@ -110,9 +110,9 @@ def main():
         help='bool - to make sure if the deduplicated reads writes to a bam file (True by default or False)',
     )
     parser.add_argument(
-        "--output_tsv", "-otsv",
-        metavar='output_tsv',
-        dest='otsv',
+        "--output_bam", "-obam",
+        metavar='output_bam',
+        dest='obam',
         type=str,
         help='str - output UMI-deduplicated summary statistics to a txt file.',
     )
@@ -170,7 +170,7 @@ def main():
             print('Attention! the m option must be added to your command for the dedup_basic module.')
             raise ValueError
         # cmd = 'python ' + fpnf + ' -h'
-        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -otsv ' + args.otsv + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
+        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -obam ' + args.obam + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
         # print(cmd)
         s = subprocess.Popen(cmd, shell=True)
         s.communicate()
@@ -191,7 +191,7 @@ def main():
             print('Attention! the pt option must be added to your command for the dedup_pos module.')
             raise ValueError
         # cmd = 'python ' + fpnf + ' -h'
-        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -pt ' + str(args.pt) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -otsv ' + args.otsv + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
+        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -pt ' + str(args.pt) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -obam ' + args.obam + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
         # print(cmd)
         s = subprocess.Popen(cmd, shell=True)
         s.communicate()
@@ -214,7 +214,7 @@ def main():
             print('Attention! the gene_assigned_tag option must be added to your command for the dedup_gene module.')
             raise ValueError
         # cmd = 'python ' + fpnf + ' -h'
-        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -gt ' + str(args.gt) + ' -gist ' + str(args.gist) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -otsv ' + args.otsv + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
+        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -gt ' + str(args.gt) + ' -gist ' + str(args.gist) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -obam ' + args.obam + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
         # print(cmd)
         s = subprocess.Popen(cmd, shell=True)
         s.communicate()
@@ -237,7 +237,7 @@ def main():
             print('Attention! the gene_assigned_tag option must be added to your command for the dedup_sc module.')
             raise ValueError
         # cmd = 'python ' + fpnf + ' -h'
-        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -gt ' + str(args.gt) + ' -gist ' + str(args.gist) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -otsv ' + args.otsv + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
+        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -gt ' + str(args.gt) + ' -gist ' + str(args.gist) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -obam ' + args.obam + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
         # print(cmd)
         s = subprocess.Popen(cmd, shell=True)
         s.communicate()

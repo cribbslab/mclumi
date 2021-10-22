@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="mclumix",
-    version="0.0.0.1",
+    version="0.0.3",
     # name="tfg666",
     # version="0.0.0.0.44",
     keywords=("pip", "mclumi"),

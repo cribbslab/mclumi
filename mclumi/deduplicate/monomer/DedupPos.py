@@ -139,12 +139,12 @@ class dedupPos():
                 help='bool - to make sure if the deduplicated bam info writes to a bam file.',
             )
             self.parser.add_argument(
-                "--output_tsv", "-otsv",
-                metavar='output_tsv',
-                dest='otsv',
+                "--output_bam", "-obam",
+                metavar='output_bam',
+                dest='obam',
                 required=True,
                 type=str,
-                help='bool - output UMI-de-duplicated summary statistics to a tsv file.',
+                help='bool - output UMI-de-duplicated summary statistics to a bam file.',
             )
             self.parser.add_argument(
                 "--verbose", "-vb",
@@ -172,7 +172,7 @@ class dedupPos():
             self.exp_val = args.expv
             self.iter_num = args.itern
             self.is_sv = args.issv
-            self.sv_fpn = args.otsv
+            self.sv_fpn = args.obam
             self.verbose = args.vb
 
         self.console = console()

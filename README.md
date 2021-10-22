@@ -45,7 +45,7 @@ usage: mclumi [-h] [--read_structure read_structure] [--lens lens]
               [--expansion_value expansion_value]
               [--iteration_number iteration_number]
               [--mcl_fold_thres mcl_fold_thres] [--is_sv is_sv]
-              [--output_tsv output_tsv] [--verbose verbose]
+              [--output_bam output_bam] [--verbose verbose]
               [--pos_tag pos_tag] [--gene_assigned_tag gene_assigned_tag]
               [--gene_is_assigned_tag gene_is_assigned_tag]
               tool
@@ -92,7 +92,7 @@ optional arguments:
   --is_sv is_sv, -issv is_sv
                         bool - to make sure if the deduplicated reads writes
                         to a bam file (True by default or False)
-  --output_tsv output_tsv, -otsv output_tsv
+  --output_bam output_bam, -obam output_bam
                         str - output UMI-deduplicated summary statistics to a
                         txt file.
   --verbose verbose, -vb verbose
@@ -117,12 +117,12 @@ optional arguments:
 
 * dedup_basic
     ```
-    mclumi dedup_basic -m mcl -ed 1 -infv 1.6 -expv 2 -ibam ./example_bundle.bam -otsv ./dedup.bam
+    mclumi dedup_basic -m mcl -ed 1 -infv 1.6 -expv 2 -ibam ./example_bundle.bam -obam ./dedup.bam
     ```
 
 * dedup_pos
     ```
-   mclumi dedup_pos -m mcl -pt PO -ed 1 -infv 1.6 -expv 2 -ibam ./example_bundle.bam -otsv ./basic/dedup.bam
+   mclumi dedup_pos -m mcl -pt PO -ed 1 -infv 1.6 -expv 2 -ibam ./example_bundle.bam -obam ./basic/dedup.bam
     ```
     
 * dedup_gene
@@ -130,7 +130,7 @@ optional arguments:
     * applicable to bulk RNA-seq data
     
     ```
-    mclumi dedup_gene -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -otsv ./dedup.bam
+    mclumi dedup_gene -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -obam ./dedup.bam
     ```
     
 * dedup_sc
@@ -138,7 +138,7 @@ optional arguments:
     * applicable to single-cell RNA-seq data
     
     ```
-    mclumi dedup_sc -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -otsv ./dedup.bam
+    mclumi dedup_sc -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -obam ./dedup.bam
     ```
 
 ### 2. **Python inline**
@@ -152,9 +152,6 @@ optional arguments:
 ## Output
 
 see ./notebooks/results_spelt_out.ipynb for result format. Yet more types of output format will be added. 
-    
-    
-        
 
 
 ## Contact

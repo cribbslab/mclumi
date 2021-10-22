@@ -1,6 +1,7 @@
 # ingore data folder
 mclumi/example/
 mclumi/plot/
+shell/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

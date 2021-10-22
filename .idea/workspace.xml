@@ -35,16 +35,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../New folder" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Document\Programming\Python\deepbio\symphony\github\mclumi" />
       <recent name="D:\Document\Programming\Python\deepbio\symphony\github\mclumi\mclumi\deduplicate\monomer" />
       <recent name="D:\Document\Programming\Python\deepbio\symphony\github\mclumi\mclumi\download\sra" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Fixed">
+  <component name="RunManager" selected="Python.DedupBasic">
     <configuration name="DedupBasic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="mclumi" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -157,8 +158,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Fixed" />
         <item itemvalue="Python.DedupBasic" />
+        <item itemvalue="Python.Fixed" />
         <item itemvalue="Python.Graph" />
         <item itemvalue="Python.DedupPos" />
         <item itemvalue="Python.Read_umitools" />
@@ -178,7 +179,7 @@
       <workItem from="1634115373963" duration="227373000" />
       <workItem from="1634864283790" duration="34000" />
       <workItem from="1634864452235" duration="52000" />
-      <workItem from="1634864541219" duration="16777000" />
+      <workItem from="1634864541219" duration="18922000" />
     </task>
     <servers />
   </component>
@@ -186,7 +187,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/mclumi$DedupBasic.coverage" NAME="DedupBasic Coverage Results" MODIFIED="1634906779952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/deduplicate/monomer" />
+    <SUITE FILE_PATH="coverage/mclumi$DedupBasic.coverage" NAME="DedupBasic Coverage Results" MODIFIED="1634926182841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/deduplicate/monomer" />
     <SUITE FILE_PATH="coverage/_mclumi$Parse.coverage" NAME="Parse Coverage Results" MODIFIED="1633883050333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/deduplicate/monomer" />
     <SUITE FILE_PATH="coverage/mclumi$DedupBulk.coverage" NAME="DedupGene Coverage Results" MODIFIED="1634419526806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/deduplicate/monomer" />
     <SUITE FILE_PATH="coverage/mclumi$Read.coverage" NAME="Read Coverage Results" MODIFIED="1634826701413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/align" />

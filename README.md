@@ -126,11 +126,17 @@ optional arguments:
     ```
     
 * dedup_gene
+
+    * applicable to bulk RNA-seq data
+    
     ```
     mclumi dedup_gene -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -otsv ./dedup.bam
     ```
     
 * dedup_sc
+
+    * applicable to single-cell RNA-seq data
+    
     ```
     mclumi dedup_sc -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -otsv ./dedup.bam
     ```
@@ -141,6 +147,12 @@ optional arguments:
     ```
     ./notebooks/...
     ```
+
+
+## Output
+
+see ./notebooks/results_spelt_out.ipynb for result format. Yet more types of output format will be added. 
+    
     
         
 

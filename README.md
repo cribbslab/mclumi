@@ -112,12 +112,12 @@ optional arguments:
 * trim
     extracting and attaching umis to names of reads in fastq format
     ```
-    mclumi trim -i ./pcr_1.fastq.gz -o ./pcr_1222.fastq.gz -rs primer_1+umi_1+seq_1+seq_2+umi_2+primer_2 -l 20+12+6+8+10+20
+    mclumi trim -i ./pcr_1.fastq.gz -o ./pcr_trimmed.fastq.gz -rs primer_1+umi_1+seq_1+umi_2+primer_2 -l 20+10+40+10+20
     ```
 
 * dedup_basic
     ```
-    mclumi dedup_basic -m mcl -ed 1 -infv 1.6 -expv 2 -ibam ./example_bundle.bam -otsv ./basic/dedup.bam
+    mclumi dedup_basic -m mcl -ed 1 -infv 1.6 -expv 2 -ibam ./example_bundle.bam -otsv ./dedup.bam
     ```
 
 * dedup_pos
@@ -127,12 +127,12 @@ optional arguments:
     
 * dedup_gene
     ```
-    mclumi dedup_gene -m directional -gt XT -gist XS -ed 1 -ibam ./assigned_sorted.bam -otsv ./basic/dedup.bam
+    mclumi dedup_gene -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -otsv ./dedup.bam
     ```
     
 * dedup_sc
     ```
-    mclumi dedup_sc -m directional -gt XT -gist XS -ed 1 -ibam ./assigned_sorted.bam -otsv ./basic/dedup.bam
+    mclumi dedup_sc -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -otsv ./dedup.bam
     ```
 
 ### 2. **Python inline**

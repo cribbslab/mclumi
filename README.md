@@ -21,7 +21,7 @@
 This repository deposits the Mclumi toolkit developed by Markov clustering (MCL) network-based algorithms for precisely localizing unique UMIs and thus removing PCR duplicates. Mclumi enables a construction of sub-graphs with UMI nodes to be relatively strongly connected.
 
 ## Documentation
-API docs is at readthedocs
+The API documentation of Mclumi is available at Readthedocs https://mclumi.readthedocs.io/en/latest/.
 
 ## System Requirement
 Linux or Mac

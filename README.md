@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/last_released-Oct._2021-green.svg)
 ![](https://img.shields.io/github/stars/cribbslab/mclumi?logo=GitHub&color=blue)
 ![](https://img.shields.io/pypi/v/mclumix?logo=PyPI)
-[![Documentation Status](https://readthedocs.org/projects/tt666gr/badge/?version=latest)](https://tt666gr.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/mclumi/badge/?version=latest)](https://mclumi.readthedocs.io/en/latest/?badge=latest)
 [![Downloads](https://pepy.tech/badge/mclumi)](https://pepy.tech/project/mclumi)
 
 ###### tags: `UMI deduplication` `PCR deduplication` `scRNA-seq` `bulk-RNA-seq`
@@ -28,9 +28,9 @@ Linux or Mac
 
 ## Installation
 
-   
+* PyPI https://pypi.org/project/mclumix/0.0.0.1/  
 ```
-    pip install --upgrade mclumix
+pip install --upgrade mclumix
 ```
 
 ## Usage

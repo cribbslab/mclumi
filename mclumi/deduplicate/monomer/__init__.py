@@ -1,8 +1,8 @@
 # ## /*** block. remote ***/
 from .Adjacency import *
-from .Build import *
+from .Build_test import *
 from .DedupBasic import *
-from .DedupPos import *
+from .DedupPos_test import *
 from .DedupGene import *
 from .DedupSC import *
 from .Cluster import *

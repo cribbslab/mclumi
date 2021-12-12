@@ -80,18 +80,18 @@ class cc(object):
                 visited.add(root)
                 component = []
                 queue = [root]
-                print('-> root {} has not been visited'.format(root))
-                print('---> a queue built by root {} is {}'.format(root, queue))
+                # print('-> root {} has not been visited'.format(root))
+                # print('---> a queue built by root {} is {}'.format(root, queue))
                 while queue:
-                    print('------> a queue built by each root node {}'.format(queue))
+                    # print('------> a queue built by each root node {}'.format(queue))
                     node = queue.pop(0)
-                    print('------> node: {}'.format(node))
+                    # print('------> node: {}'.format(node))
                     component.append(node)
                     for nbr in graph[node]:
                         if nbr not in visited:
                             visited.add(nbr)
                             queue.append(nbr)
-                print('------> visited nodes {}'.format(visited))
+                # print('------> visited nodes {}'.format(visited))
                 components.append(component)
             else:
                 print('-> root {} has been visited'.format(root))
@@ -135,6 +135,6 @@ if __name__ == "__main__":
     }
     p = cc()
 
-    print(list(p.deque(graph_adj)))
+    # print(list(p.deque(graph_adj)))
 
-    # print(p.set(graph_adj))
+    print(p.set(graph_adj))

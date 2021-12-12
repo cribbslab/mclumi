@@ -11,8 +11,6 @@ import numpy as np
 import pandas as pd
 from mclumi.align.Read import read as aliread
 from mclumi.align.Write import write as aliwrite
-from mclumi.fastq.Read import read as rfastq
-from mclumi.fastq.Write import write as wfastq
 from mclumi.util.Writer import writer as gwriter
 from mclumi.util.Hamming import hamming
 from mclumi.util.Number import number as rannum
@@ -24,9 +22,9 @@ from mclumi.deduplicate.monomer.Directional import directional as umitoolmonodir
 from mclumi.deduplicate.monomer.MarkovClustering import markovClustering as umimonomcl
 
 
-class dedupSC():
+class dedupPos():
 
-    def __init__(self, bam_fpn, ed_thres, method, gene_assigned_tag, gene_is_assigned_tag, mode='internal', mcl_fold_thres=None, inflat_val=2.0, exp_val=2, iter_num=100, is_sv=True, sv_fpn='./dedup.bam', verbose=False):
+    def __init__(self, bam_fpn, ed_thres, method, mode='external', pos_tag='PO', mcl_fold_thres=None, inflat_val=2.0, exp_val=2, iter_num=100, is_sv=True, sv_fpn='./dedup.bam', verbose=False):
         """
         Parameters
         ----------
@@ -38,10 +36,8 @@ class dedupSC():
             str - a deduplication method (mcl, mcl_val, mcl_ed, cluster, unique, ajacency, directional)
         mode
             str - externally or internally run the module (external by defualt, internal)
-        gene_assigned_tag
-            str - to enable deduplication on the gene tag (XT recommended)
-        gene_is_assigned_tag
-            str - to check if reads are assigned the gene tag (XS recommended)
+        pos_tag
+            str - to enable deduplication on the position tags (PO recommended when your bam is tagged)
         mcl_fold_thres
             float - a mcl fold threshold (1.5 by defualt)
         inflat_val
@@ -65,8 +61,7 @@ class dedupSC():
             self.method = method
             self.bam_fpn = bam_fpn
             self.ed_thres = ed_thres
-            self.gene_assigned_tag = gene_assigned_tag
-            self.gene_is_assigned_tag = gene_is_assigned_tag
+            self.pos_tag = pos_tag
             self.mcl_fold_thres = mcl_fold_thres
             self.inflat_val = inflat_val
             self.exp_val = exp_val
@@ -149,7 +144,7 @@ class dedupSC():
                 dest='obam',
                 required=True,
                 type=str,
-                help='str - output UMI-de-duplicated summary statistics to a bam file.',
+                help='bool - output UMI-de-duplicated summary statistics to a bam file.',
             )
             self.parser.add_argument(
                 "--verbose", "-vb",
@@ -160,27 +155,18 @@ class dedupSC():
                 help='bool - to enable if output logs are on console, print log on the console, (True by default or False)',
             )
             self.parser.add_argument(
-                "--gene_assigned_tag", "-gt",
-                metavar='gene_assigned_tag',
-                dest='gt',
+                "--pos_tag", "-pt",
+                metavar='pos_tag',
+                dest='pt',
                 required=True,
                 type=str,
-                help='str - to enable deduplication on the gene tag (XT recommended)',
-            )
-            self.parser.add_argument(
-                "--gene_is_assigned_tag", "-gist",
-                metavar='gene_is_assigned_tag',
-                dest='gist',
-                required=True,
-                type=str,
-                help='str - to check if reads are assigned the gene tag (XS recommended).',
+                help='str - to enable deduplication on the position tags (PO recommended).',
             )
             args = self.parser.parse_args()
             self.method = args.m
             self.bam_fpn = args.ibam
             self.ed_thres = args.ed
-            self.gene_assigned_tag = args.gt
-            self.gene_is_assigned_tag = args.gist
+            self.pos_tag = args.pt
             self.mcl_fold_thres = args.fthres
             self.inflat_val = args.infv
             self.exp_val = args.expv
@@ -198,28 +184,22 @@ class dedupSC():
         self.umitoolmonoadj = umitoolmonoadj()
         self.umitoolmonodirec = umitoolmonodirec()
 
-        self.console.print('======>runing method {}...'.format(self.method))
         self.alireader = aliread(bam_fpn=self.bam_fpn, verbose=self.verbose)
-        self.df_bam = self.alireader.todf(tags=[self.gene_assigned_tag, self.gene_is_assigned_tag])
+        self.df_bam = self.alireader.todf(tags=[self.pos_tag])
         self.console.print('======># of raw reads: {}'.format(self.df_bam.shape[0]))
         self.df_bam = self.df_bam.loc[self.df_bam['reference_id'] != -1]
         self.console.print('======># of reads with qualified chrs: {}'.format(self.df_bam.shape[0]))
-        self.df_bam = self.df_bam.loc[self.df_bam[self.gene_is_assigned_tag] == 'Assigned']
-        # self.df_bam = self.df_bam.loc[self.df_bam[self.gene_is_assigned_tag] == 'Assigned'][:10000]
-        self.console.print('======># of reads with assigned genes: {}'.format(self.df_bam.shape[0]))
 
-        self.df_bam['bc'] = self.df_bam['query_name'].apply(lambda x: x.split('_')[1])
-        self.df_bam['umi'] = self.df_bam['query_name'].apply(lambda x: x.split('_')[2])
-        self.console.print('======># of unique barcodes: {}'.format(self.df_bam['bc'].unique().shape[0]))
+        self.df_bam['umi'] = self.df_bam['query_name'].apply(lambda x: x.split('_')[1])
         self.console.print('======># of unique umis: {}'.format(self.df_bam['umi'].unique().shape[0]))
         self.console.print('======># of redundant umis: {}'.format(self.df_bam['umi'].shape[0]))
 
         self.aliwriter = aliwrite(df=self.df_bam)
         self.aliwriter.is_sv = self.is_sv
 
-        self.df_bam_gp = self.df_bam.groupby(by=['bc', self.gene_assigned_tag])
+        self.df_bam_gp = self.df_bam.groupby(by=[self.pos_tag])
         self.gp_keys = self.df_bam_gp.groups.keys()
-        self.console.print('======># of gene-by-cell positions in the bam: {}'.format(len(self.gp_keys)))
+        self.console.print('======># of positions in the bam: {}'.format(len(self.gp_keys)))
         self.console.print('======>edit distance thres: {}'.format(self.ed_thres))
 
         self.umimonomcl = umimonomcl(
@@ -233,7 +213,6 @@ class dedupSC():
         gps = []
         res_sum = []
         for g in self.gp_keys:
-            # print(g)
             umi_vignette = self.umibuild(
                 df=self.df_bam_gp.get_group(g),
                 ed_thres=self.ed_thres,
@@ -251,13 +230,31 @@ class dedupSC():
                 cc,
                 [*umi_vignette['umi_uniq_mapped_rev'].keys()],
             ])
+
             if umi_vignette['fff']:
-                print(len(self.umimonomcl.decompose(
+                oiu = self.umimonomcl.decompose(
                     list_nd=self.umimonomcl.dfclusters(
                         connected_components=cc,
                         graph_adj=umi_vignette['graph_adj'],
-                    )['clusters'].values)))
+                    )['clusters'].values)
+                print('mcl', oiu)
+                print(len(oiu))
+
+                print('cc', cc)
                 print(len(cc))
+
+                dsd = self.umimonomcl.decompose(
+                    list_nd=self.umimonomcl.maxval_ed(
+                        df_mcl_ccs=self.umimonomcl.dfclusters(
+                            connected_components=cc,
+                            graph_adj=umi_vignette['graph_adj'],
+                        ),
+                        df_umi_uniq_val_cnt=umi_vignette['df_umi_uniq_val_cnt'],
+                        umi_uniq_mapped_rev=umi_vignette['umi_uniq_mapped_rev'],
+                        thres_fold=self.mcl_fold_thres,
+                    )['clusters'].values)
+                print('mcl_ed', dsd)
+                print(len(dsd))
 
         self.df = pd.DataFrame(
             data=res_sum,
@@ -269,7 +266,6 @@ class dedupSC():
         self.df['uniq_umi_len'] = self.df['uniq_repr_nodes'].apply(lambda x: self.length(x))
 
         self.console.print('===>start deduplication by the {} method...'.format(self.method))
-
         if self.method == 'unique':
             dedup_umi_stime = time.time()
             # self.df['uniq_sgl_mark'] = self.df['uniq_repr_nodes'].apply(lambda x: self.markSingleUMI(x))
@@ -623,6 +619,23 @@ class dedupSC():
         else:
             return 'no'
 
+    def correct(self, umi):
+        vernier = [i for i in range(36) if i % 3 == 0]
+        umi_trimers = [umi[v: v+3] for v in vernier]
+        # umi_trimers = textwrap.wrap(umi, 3)
+        t = []
+        for umi_trimer in umi_trimers:
+            s = set(umi_trimer)
+            if len(s) == 3:
+                rand_index = self.rannum.uniform(low=0, high=3, num=1, use_seed=False)[0]
+                t.append(umi_trimer[rand_index])
+            elif len(s) == 2:
+                sdict = {umi_trimer.count(i): i for i in s}
+                t.append(sdict[2])
+            else:
+                t.append(umi_trimer[0])
+        return ''.join(t)
+
     def decompose(self, list_nd):
         """
 
@@ -707,7 +720,7 @@ class dedupSC():
 if __name__ == "__main__":
     from mclumi.Path import to
 
-    umikit = dedupSC(
+    umikit = dedupPos(
         mode='internal',
         # mode='external',
 
@@ -719,15 +732,15 @@ if __name__ == "__main__":
         # method='mcl_val',
         # method='mcl_ed',
 
-        bam_fpn=to('example/data/assigned_sorted.bam'),
-        gene_assigned_tag='XT',
-        gene_is_assigned_tag='XS',
+        # bam_fpn=to('example/data/example.bam'),
+        bam_fpn=to('example/data/example_bundle.bam'),
+        pos_tag='PO',
         mcl_fold_thres=1.5,
         inflat_val=1.6,
         exp_val=2,
         iter_num=100,
         verbose=True,
-        ed_thres=6,
+        ed_thres=1,
         is_sv=False,
-        sv_fpn=to('example/data/sc/') + '' + 'assigned_sorted_dedup.bam',
+        sv_fpn=to('example/data/pos/assigned_sorted_dedup.bam'),
     )

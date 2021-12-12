@@ -15,11 +15,12 @@ from mclumi.util.Writer import writer as gwriter
 from mclumi.util.Hamming import hamming
 from mclumi.util.Number import number as rannum
 from mclumi.util.Console import console
-from mclumi.deduplicate.monomer.Build import build as umibuild
+from mclumi.deduplicate.monomer.Build_test import build as umibuild
 from mclumi.deduplicate.monomer.Cluster import cluster as umimonoclust
 from mclumi.deduplicate.monomer.Adjacency import adjacency as umitoolmonoadj
 from mclumi.deduplicate.monomer.Directional import directional as umitoolmonodirec
 from mclumi.deduplicate.monomer.MarkovClustering import markovClustering as umimonomcl
+sys.setrecursionlimit(15000000)
 
 
 class dedupGene():
@@ -707,13 +708,13 @@ if __name__ == "__main__":
     from mclumi.Path import to
 
     umikit = dedupGene(
-        # mode='internal',
-        mode='external',
+        mode='internal',
+        # mode='external',
 
         # method='unique',
-        method='cluster',
+        # method='cluster',
         # method='adjacency',
-        # method='directional',
+        method='directional',
         # method='mcl',
         # method='mcl_val',
         # method='mcl_ed',
@@ -721,12 +722,12 @@ if __name__ == "__main__":
         bam_fpn=to('example/data/RM82CLK1_S3_featurecounts_gene_sorted.bam'),
         gene_assigned_tag='XT',
         gene_is_assigned_tag='XS',
-        mcl_fold_thres=1.5,
+        mcl_fold_thres=1.6,
         inflat_val=1.6,
         exp_val=2,
         iter_num=100,
         verbose=True,
-        ed_thres=6,
+        ed_thres=7,
         is_sv=False,
         sv_fpn=to('example/data/gene/assigned_sorted_dedup.bam'),
     )

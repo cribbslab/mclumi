@@ -1,4 +1,5 @@
-import umi_tools.sam_methods as sam_methods
+# import umi_tools.sam_methods as sam_methods
+import mclumi.external.UMItoolsSamMethods as sam_methods
 import pysam
 from mclumi.util.Hamming import hamming
 import pandas as pd
@@ -22,6 +23,47 @@ def edave(x, d):
         return -1
 
 
+def convert(options, in_fpn, out_fpn):
+    bundle_iterator = sam_methods.get_bundles(
+        options,
+        metacontig_contig=None,
+    )
+    infile = pysam.Samfile(in_fpn, 'rb')
+    inreads = infile.fetch()
+    num_bundled_pos = 0
+    umis = []
+    nInput = 0
+    reads = []
+    uniq_umi_cnt = 0
+    write_to_bam = pysam.AlignmentFile(out_fpn, "wb", template=infile)
+    for i, (bundle, key, status) in enumerate(bundle_iterator(inreads)):
+        # print([bundle[umi]["read"] for umi in bundle])
+        for j, umi in enumerate(bundle):
+            read = bundle[umi]["read"]
+            read.set_tag('PO', i)
+            for _ in range(bundle[umi]["count"]):
+                reads.append(bundle[umi]["read"])
+            uniq_umi_cnt += 1
+        nInput += sum([bundle[umi]["count"] for umi in bundle])
+
+        umis.append([i.decode('utf-8') for i in bundle.keys()])
+        num_bundled_pos += 1
+
+    for y in reads:
+        write_to_bam.write(y)
+    write_to_bam.close()
+
+    print('# of unique reads {}'.format(len(reads)))
+    print('# of bundled pos {}'.format(num_bundled_pos))
+    print('# of repeated UMIs in total {}'.format(nInput))
+    df = pd.DataFrame(index=np.arange(num_bundled_pos))
+    df[1] = np.arange(num_bundled_pos)
+    df[2] = df.apply(lambda x: edave(x, umis), axis=1)
+    return df[2].value_counts()
+
+
+in_fpn = to('example/data/example.bam')
+out_fpn = to('example/data/example_bundle.bam')
 options = {'stats': 'deduplicated',
            'get_umi_method': 'read_id',
            'umi_sep': '_',
@@ -71,53 +113,7 @@ options = {'stats': 'deduplicated',
            'short_help': None,
            'random_seed': None
            }
-bundle_iterator = sam_methods.get_bundles(
-    options,
-    metacontig_contig=None,
-)
 
-infile = pysam.Samfile(to('example/data/example.bam'), 'rb')
 
-inreads = infile.fetch()
-
-c = 0
-d = []
-nInput = 0
-tt = []
-ttt = []
-tttt = []
-c_cnt = 0
-write_to_bam = pysam.AlignmentFile(to('example/data/example_bundle.bam'), "wb", template=infile)
-
-for i, (bundle, key, status) in enumerate(bundle_iterator(inreads)):
-    ttt.append(len(bundle))
-    # print([bundle[umi]["read"] for umi in bundle])
-    for j, umi in enumerate(bundle):
-        bbh = bundle[umi]["read"]
-        bbh.set_tag('PO', i)
-
-            # ttt.append(bbh)
-        # print(bundle[umi]["read"])
-        # write_to_bam.write(bundle[umi]["read"])
-        for _ in range(bundle[umi]["count"]):
-            tt.append(bundle[umi]["read"])
-        c_cnt += 1
-    nInput += sum([bundle[umi]["count"] for umi in bundle])
-    d.append([i.decode('utf-8') for i in bundle.keys()])
-    c += 1
-
-for y in tt:
-    write_to_bam.write(y)
-print(len(tt))
-# print(sum(ttt))
-write_to_bam.close()
-print(c)
-print(len(tttt))
-# print(len(np.unique(tttt)))
-print('asdasdasd222', nInput)
-s = pd.DataFrame(index=np.arange(c))
-s[1] = np.arange(c)
-s[2] = s.apply(lambda x: edave(x, d), axis=1)
-print(s[2])
-print(s[2].value_counts())
-
+if __name__ == "__main__":
+    convert(options=options, in_fpn=in_fpn, out_fpn=out_fpn)

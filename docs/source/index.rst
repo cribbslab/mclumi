@@ -25,8 +25,10 @@ in Mclumi can be run internally (Python inline) or externally (CLI).
    :maxdepth: 2
    :caption: Contents:
 
+   quick_start_guide
+   tutorial/index
+   format/index
    modules
-   hand/index
 
 Features
 --------

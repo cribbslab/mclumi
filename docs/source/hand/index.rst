@@ -10,8 +10,14 @@ Welcome to mclumi's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   modules
-   hand/index
+   a_single_genomic_locus
+   bulkRNAseq
+   genomic_loci
+   input_format
+   output_format
+   quick_start_guide
+   scRNAseq
+   trim
 
 
 

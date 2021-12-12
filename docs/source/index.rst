@@ -22,6 +22,8 @@ output a deduplicated bam file and another 2 summary files. Every module
 in Mclumi can be run internally (Python inline) or externally (CLI).
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
    modules
    hand/index

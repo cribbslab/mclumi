@@ -168,7 +168,7 @@ All methods in UMI-tools are reconstructed in Mcluim by implementing the ``clust
 
 |image0| Figure 1. Comparison of performance of the UMI-tools directional method and the Mclumi directional method.
 
-|image1| Figure 2. Performance of all methods.
+|image1| Figure 2. Profile of average edit distances of all methods.
 
 Contact
 -------

@@ -6,8 +6,8 @@ Overview
 
 We set up a quick start guide to walk you through an example to use
 Mclumi. Mclumi provides 7 methods for UMI deduplication, that is,
-**``unique``**, **``cluster``**, **``adjacency``**, **``directional``**,
-**``mcl``**, **``mcl_ed``**, and **``mcl_val``**, and 4 modules for
+``unique``, ``cluster``, ``adjacency``, ``directional``,
+``mcl``, ``mcl_ed``, and ``mcl_val``, and 4 modules for
 handling 4 types of application scenarios, that is, a single genomic
 locus, genomic positions, genes, and cell-by-gene types.
 
@@ -114,14 +114,14 @@ Command-Line Interface (CLI)
 Deduplication according to genomic positions
 --------------------------------------------
 
-**``dedup_pos``** is taken as an example. It allows users to deduplicate
+``dedup_pos`` is taken as an example. It allows users to deduplicate
 PCR artifacts/UMIs based on a set of genomic position annotations on a
 large scale. In the quick start guide, we omitted some data
 preprocessing procedures and start from introduing a dataset (a clip of
 ChIP-seq data used also in UMI-tools) contains 1,175,027 reads with
 20,683 raw unique UMI sequences and 12,047 genomic positions tagged by
-running the UMI-tools **``get_bundles``** method that is also adopted by
-Mclumi in which it can be accessed by the **``mclumi.align.BundlePos``**
+running the UMI-tools ``get_bundles`` method that is also adopted by
+Mclumi in which it can be accessed by the ``mclumi.align.BundlePos``
 module.
 
 Downloading data

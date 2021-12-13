@@ -13,6 +13,14 @@ It provides a collection of modules, including 4 main modules, ``dedup_basic``, 
 
 .. _here: https://mclumi.readthedocs.io/en/latest/tutorial/index.html
 
+::
+
+    __  __  ____ _    _   _ __  __ ___   _____           _ _    _ _
+   |  \/  |/ ___| |  | | | |  \/  |_ _| |_   _|__   ___ | | | _(_) |_
+   | |\/| | |   | |  | | | | |\/| || |    | |/ _ \ / _ \| | |/ / | __|
+   | |  | | |___| |__| |_| | |  | || |    | | (_) | (_) | |   <| | |_
+   |_|  |_|\____|_____\___/|_|  |_|___|   |_|\___/ \___/|_|_|\_\_|\__|
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

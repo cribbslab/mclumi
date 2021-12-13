@@ -7,6 +7,7 @@ import pandas as pd
 from mclumi.fastq.Read import read as rfastq
 from mclumi.fastq.Write import write as wfastq
 from mclumi.trim.Filter import filter
+from mclumi.trim.BCRuleOut import bcRuleOut as bcro
 from mclumi.trim.UMIRuleOut import umiRuleOut as umiro
 from mclumi.trim.SeqRuleOut import seqRuleOut as seqro
 from mclumi.Path import to
@@ -19,6 +20,7 @@ class template(object):
         self.params = params
         self.verbose = verbose
         self.filter = filter()
+        self.bcro = bcro(read_summary=self.params, verbose=self.verbose)
         self.umiro = umiro(read_summary=self.params, verbose=self.verbose)
         self.seqro = seqro(read_summary=self.params, verbose=self.verbose)
         self.rfastq = rfastq
@@ -57,6 +59,7 @@ class template(object):
             pandas dataframe with column names: seq_raw, name, umi_1, umi_2, ..., umi_n, seq_2, seq_3, ..., seq_n
 
         """
+
         self.console.print('===>reading from fastq...')
         names, seqs, _, _ = self.rfastq().fromgz(
             fastq_fpn=self.params['fastq']['fpn'],
@@ -65,28 +68,46 @@ class template(object):
         df['name'] = names
         self.console.print('===>umi structure: {}'.format(self.params['read_struct']))
         compo_struct = self.params['read_struct'].split('+')
+        bc_pos_in_struct = [i for i, cstruct in enumerate(compo_struct) if 'bc' in cstruct.split('_')]
+        # print(bc_pos_in_struct)
         umi_pos_in_struct = [i for i, cstruct in enumerate(compo_struct) if 'umi' in cstruct.split('_')]
         seq_pos_in_struct = [i for i, cstruct in enumerate(compo_struct) if 'seq' in cstruct.split('_')]
+        self.console.print('===>bc positions in the read structure: {}'.format(', '.join(map(str, bc_pos_in_struct))))
         self.console.print('===>umi positions in the read structure: {}'.format(', '.join(map(str, umi_pos_in_struct))))
         self.console.print('===>seq positions in the read structure: {}'.format(', '.join(map(str, seq_pos_in_struct))))
+        bc_rule_out_len_dict = self.bcro.sequential(
+            compo_struct=compo_struct,
+            bc_pos_in_struct=bc_pos_in_struct,
+        )
+        # print(bc_rule_out_len_dict)
         umi_rule_out_len_dict = self.umiro.sequential(
             compo_struct=compo_struct,
             umi_pos_in_struct=umi_pos_in_struct,
         )
+        # print(df)
         seq_rule_out_len_dict = self.seqro.sequential(
             compo_struct=compo_struct,
             seq_pos_in_struct=seq_pos_in_struct,
         )
+        # print(df)
+        for key, val in bc_rule_out_len_dict.items():
+            start = val
+            end = val + self.params[key]['len']
+            df[key] = df.apply(lambda x: self.filter.singleStart(x['seq_raw'], start, end), axis=1)
+            self.console.print('===>{} has been taken out'.format(key))
+        # print(df)
         for key, val in umi_rule_out_len_dict.items():
             start = val
             end = val + self.params[key]['len']
             df[key] = df.apply(lambda x: self.filter.singleStart(x['seq_raw'], start, end), axis=1)
             self.console.print('===>{} has been taken out'.format(key))
+        # print(df)
         for key, val in seq_rule_out_len_dict.items():
             start = val
             end = val + self.params[key]['len']
             df[key] = df.apply(lambda x: self.filter.singleStart(x['seq_raw'], start, end), axis=1)
             self.console.print('===>{} has been taken out'.format(key))
+        # print(df)
         return df
 
     def togz(self, df):

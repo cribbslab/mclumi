@@ -1,7 +1,7 @@
 A single genomic locus
 ======================
 
-The Mclumi **``dedup_basic``** module allows users to work out a
+The Mclumi ``dedup_basic`` module allows users to work out a
 deduplicated molecules at a given genomic locus. This module can be seen
 as the most basic unit of deduplicating other RNA-seq reads and it
 simply gives a line of summarized statistics.

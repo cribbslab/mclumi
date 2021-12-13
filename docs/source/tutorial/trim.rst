@@ -1,18 +1,7 @@
 Trim
 ====
 
-The Mclumi **``Trim``** module allows users to trim UMI(s) and/or
-barcode(s) of any length as well as other components (e.g., primer) from
-a complex read structure, which is much more flexible than other UMI
-tools. For instance, it can be used for trimming from reads sequenced by
-template bulk-RNA-seq and scRNA-seq and so on. The module works based on
-a clear defined structure of a read. Therefore, the module needs the
-read length to be indentical for all as well as UMI-tools does. In
-python inline mode, a set of parameters need to be specified in json
-format for the composition/structure of your input reads. For example,
-an input read consists of a barcode first, a umi then, and a read
-finally. Details of an exmaple of reads by template switching oligos
-(TSO) are given below.
+The Mclumi ``Trim`` module allows users to trim UMI(s) and/or barcode(s) of any length as well as other components (e.g., primer) from a complex read structure, which is much more flexible than other UMI tools. For instance, it can be used for trimming from reads sequenced by template bulk-RNA-seq and scRNA-seq and so on. The module works based on a clear defined structure of a read. Therefore, the module needs the read length to be indentical for all as well as UMI-tools does. In python inline mode, a set of parameters need to be specified in json format for the composition/structure of your input reads. For example, an input read consists of a barcode first, a umi then, and a read finally. Details of an exmaple of reads by template switching oligos (TSO) are given below.
 
 Python inline
 -------------
@@ -60,14 +49,9 @@ Python inline
    )
    p.call()
 
-As an example, we take a simulated fastq file of small size, which can
-be download via
-`pcr_1.fastq.gz <https://github.com/cribbslab/mclumi/releases/download/exfastq/pcr_1.fastq.gz>`__.
+As an example, we take a simulated fastq file of small size, which can be download via `pcr_1.fastq.gz <https://github.com/cribbslab/mclumi/releases/download/exfastq/pcr_1.fastq.gz>`__.
 
-If you tend to run Mclumi in inline mode, the parameter of **``mode``**
-should be specified as **``internal``**. This will tell Mclumi to run
-the Trim module inline. After running starts, the module pops out
-prompts like this
+If you tend to run Mclumi in inline mode, the parameter of ``mode`` should be specified as ``internal``. This will tell Mclumi to run the Trim module inline. After running starts, the module pops out prompts like this
 
 .. code:: shell
 
@@ -92,9 +76,7 @@ prompts like this
 CLI
 ---
 
-If you tend to run Mclumi in CLI, only quite a few differences should be
-made. ``-l`` the lengths of different components should also be
-concatenated by +.
+If you tend to run Mclumi in CLI, only quite a few differences should be made. ``-l`` the lengths of different components should also be concatenated by +.
 
 ::
 

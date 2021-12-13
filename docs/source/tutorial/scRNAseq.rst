@@ -11,20 +11,7 @@ sequencing data.
 
    mclumi dedup_sc -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -obam ./dedup.bam
 
-We walk you through an example input file used in UMI-tools, which can
-be downloaded via either
-https://github.com/cribbslab/mclumi/releases/download/sc_ex_hgmm_100fastq/hgmm_100_R2_extracted.fastq.gz
-or
-http://cf.10xgenomics.com/samples/cell-exp/1.3.0/hgmm_100/hgmm_100_fastqs.tar
-for raw reads. **``hgmm_100_STAR_FC_sorted.bam``** is a processed bam
-file with each read name attaching a barcode using the UMI-tools
-**``whitelist``** module and a UMI. Alternatively, you can also skip
-over to by downloading a processed bam file
-https://github.com/cribbslab/mclumi/releases/download/sc_ex_hgmm_100/hgmm_100_STAR_FC_sorted.bam.
-The single-cell dataset was derived from 10X Genomics
-(http://cf.10xgenomics.com/samples/cell-exp/1.3.0/hgmm_100/hgmm_100_fastqs.tar).
-It contains 3,553,230 raw reads. The 100 barcodes were generated using
-UMI-tools whitelist.
+We walk you through an example input file used in UMI-tools, which can be downloaded via either https://github.com/cribbslab/mclumi/releases/download/sc_ex_hgmm_100fastq/hgmm_100_R2_extracted.fastq.gz or http://cf.10xgenomics.com/samples/cell-exp/1.3.0/hgmm_100/hgmm_100_fastqs.tar for raw reads. ``hgmm_100_STAR_FC_sorted.bam`` is a processed bam file with each read name attaching a barcode using the UMI-tools ``whitelist`` module and a UMI. Alternatively, you can also skip over to by downloading a processed bam file https://github.com/cribbslab/mclumi/releases/download/sc_ex_hgmm_100/hgmm_100_STAR_FC_sorted.bam. The single-cell dataset was derived from 10X Genomics (http://cf.10xgenomics.com/samples/cell-exp/1.3.0/hgmm_100/hgmm_100_fastqs.tar). It contains 3,553,230 raw reads. The 100 barcodes were generated using UMI-tools ``whitelist``.
 
 1). Downloading scRNA-seq data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,14 +62,12 @@ or simply via conda
 
    STAR --runThreadN 10 --genomeDir grch38_gd/ --readFilesIn hgmm_100_R2_extracted.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 1 --outSAMtype BAM SortedByCoordinate
 
-After mapping STAR (v2.7.9a, Dobin et al., 2012) mapping on GRCh38,
-588,963 reads are left.
+After mapping STAR (v2.7.9a, Dobin et al., 2012) mapping on GRCh38, 588,963 reads are left.
 
 3). Genome annotation
 ~~~~~~~~~~~~~~~~~~~~~
 
-Genes that reads belong to are annotated using featureCounts (v2.0.1,
-Liao et al., 2014).
+Genes that reads belong to are annotated using featureCounts (v2.0.1, Liao et al., 2014).
 
 ::
 
@@ -101,10 +86,7 @@ Liao et al., 2014).
 
    mclumi dedup_sc -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -obam ./dedup.bam
 
-**``dedup.bam``** is the final results after UMI deduplication. Each
-read in the deduplicated file is selected as a representative from its
-network-based graph with the highest UMI count before deduplication. The
-final results look like this:
+``dedup.bam`` is the final results after UMI deduplication. Each read in the deduplicated file is selected as a representative from its network-based graph with the highest UMI count before deduplication. The final results look like this.
 
 +--------------------------+-------+---+------+-----------+-----------+
 | type                     | {     | a | uniq | d         | d         |
@@ -130,17 +112,12 @@ final results look like this:
 | …                        | …     | … | …    | …         | …         |
 +--------------------------+-------+---+------+-----------+-----------+
 
-The second column presents dedup UMI counts (corresponding to the number
-of DNA molecules/transcripts) at given gene-by-cell types. Please look
-at `here <https://>`__ detailed explanations of the data format.
+The second column presents dedup UMI counts (corresponding to the number of DNA molecules/transcripts) at given gene-by-cell types. Please look at `here <https://>`__ detailed explanations of the data format.
 
 2. Python inline
 ----------------
 
-The Mclumi toolkit can internally run by class **``dedupSC()``** by
-importing it from module **``mclumi.deduplicate.monomer``**. Before
-running this module internally, you should also obtain a **``bam``**
-file first, which is completely the same as above.
+The Mclumi toolkit can internally run by class ``dedupSC()`` by importing it from module ``mclumi.deduplicate.monomer``. Before running this module internally, you should also obtain a ``bam`` file first, which is completely the same as above.
 
 ::
 

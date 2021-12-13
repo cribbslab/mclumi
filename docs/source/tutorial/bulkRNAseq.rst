@@ -1,10 +1,7 @@
 bulk RNA-seq
 ============
 
-A typical application scenario for using ``dedup_gene`` is when it is
-applied for bulk RNA-seq reads annotated with gene tags. But this can
-definitely be used for reads using other sequencing techniques. designed
-for deduplicating PCR artifacts in single-cell sequencing data.
+A typical application scenario for using ``dedup_gene`` is when it is applied for bulk RNA-seq reads annotated with gene tags. But this can definitely be used for reads using other sequencing techniques. designed for deduplicating PCR artifacts in single-cell sequencing data.
 
 Downloading data
 ----------------

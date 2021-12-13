@@ -2,25 +2,25 @@ Output format
 =============
 
 Mclumi provides three output files after running each of the
-dedup_basic, dedup_pos, dedup_gene, and dedup_sc modules, with the
+``dedup_basic``, ``dedup_pos``, ``dedup_gene``, and ``dedup_sc`` modules, with the
 following names.
 
-1. {method}_ave_ed_pos_bin.txt
-2. {method}_dedup_sum.txt
-3. {name}_dedup.bam
+1. ``{method}_ave_ed_pos_bin.txt``
+2. ``{method}_dedup_sum.txt``
+3. ``{name}_dedup.bam``
 
-Please note that {method} above refers to {uniq}, {cc}, {adj}, {direc},
-{mcl}, {mcl_val}, or {mcl_ed} standing for the unique, adjacency,
-directional, mcl, mcl_val, or mcl_ed method, correspondingly. {name} can
+Please note that ``{method}`` above refers to ``{uniq}``, ``{cc}``, ``{adj}``, ``{direc}``,
+``{mcl}``, ``{mcl_val}``, or ``{mcl_ed}`` standing for the ``unique``, ``adjacency``,
+``directional``, ``mcl``, ``mcl_val``, or ``mcl_ed`` method, correspondingly. ``{name}`` can
 be designated by users. Result format is spelt out below.
 
 1. Single genomic position/gene/gene-by-cell result format
 ----------------------------------------------------------
 
-The results will be obtained after running the module of dedup_basic,
-with a {method}_ave_ed_pos_bin.txt file returned to only indicate
+The results will be obtained after running the module of ``dedup_basic``,
+with a ``{method}_ave_ed_pos_bin.txt`` file returned to only indicate
 deduplicated UMI counts across all reads in a given bam file and a
-{method}_dedup_sum.txt file returned for the total number of reads
+``{method}_dedup_sum.txt`` file returned for the total number of reads
 sharing an average edit distance.
 
 2. Genomic position result format
@@ -29,7 +29,7 @@ sharing an average edit distance.
 Data at the third row is interpreted as: the number of genomic positions
 observed with an average edit distance 3 between UMIs is 4.
 
-{method}_ave_ed_pos_bin.txt
+``{method}_ave_ed_pos_bin.txt``
 
 ============= ======
 edit distance number
@@ -81,7 +81,7 @@ Spelling out results
 Data at the third row is interpreted as: the number of gene types
 observed with an average edit distance 3 between UMIs is 4.
 
-{method}_ave_ed_pos_bin.txt
+``{method}_ave_ed_pos_bin.txt``
 
 ============= ======
 edit distance number
@@ -132,7 +132,7 @@ edit distance number
 Data at the third row is interpreted as: the number of gene-by-cell
 types observed with an average edit distance 3 between UMIs is 4.
 
-{method}_ave_ed_pos_bin.txt
+``{method}_ave_ed_pos_bin.txt``
 
 ============= ======
 edit distance number

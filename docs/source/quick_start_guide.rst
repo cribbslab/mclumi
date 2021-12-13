@@ -172,5 +172,5 @@ Contact
 
 Homepage: https://www.ndorms.ox.ac.uk/team/adam-cribbs
 
-.. |image0| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/ave_eds.jpg
-.. |image1| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/all_ave_eds.jpg
+.. |image0| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/ave_eds.jpg?raw=true
+.. |image1| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/ave_eds.jpg?raw=true

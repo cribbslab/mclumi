@@ -4,7 +4,7 @@ Quick start guide
 Overview
 --------
 
-We set up a quick start guide to walk you through an example to use Mclumi. Mclumi provides 7 methods for UMI deduplication, that is, ``unique``, ``cluster``, ``adjacency``, ``directional``, ``mcl``, ``mcl_ed``, and ``mcl_val``, and 4 modules for handling 4 types of application scenarios, that is, a single genomic locus, genomic positions, genes, and cell-by-gene types.
+We set up a quick start guide to walk you through an example to use Mclumi. Mclumi provides 7 methods for UMI deduplication, that is, ``unique``, ``cluster``, ``adjacency``, ``directional``, ``mcl``, ``mcl_ed``, and ``mcl_val``, and 4 modules for handling 4 types of application scenarios, that is, a single genomic locus, multiple genomic loci, genes, and cell-by-gene types.
 
 Documentation
 -------------
@@ -156,10 +156,13 @@ Result interpretation
 ---------------------
 
 The Mcluim dedup_pos module returns two files as follows.
+
 1. ``{method}_ave_ed_pos_bin.txt``
 2. ``{method}_dedup_sum.txt``
 
-where {method} represents the ``unique``, ``adjacency``, ``directional``, ``mcl``, ``mcl_val``, or ``mcl_ed`` method, correspondingly. ``{method}_ave_ed_pos_bin.txt`` mainly summerizes the total number of genomic positions with respect to their average edit distances (Figures 1 and 2). Further explanations can be found on .
+where {method} represents the ``unique``, ``adjacency``, ``directional``, ``mcl``, ``mcl_val``, or ``mcl_ed`` method, correspondingly. ``{method}_ave_ed_pos_bin.txt`` mainly summerizes the total number of genomic positions with respect to their average edit distances (Figures 1 and 2). Further explanations can be found on output_format_.
+
+.. _output_format: https://mclumi.readthedocs.io/en/latest/format/output_format.html
 
 All methods in UMI-tools are reconstructed in Mcluim by implementing the ``cluster`` and ``adjacency`` methods based on the breadth first search (BFS) algorithm and the directional method based on the depth first search (DFS) algorithm. After then, in order to test whether these methods are implemented correctly, the two software packages were performed on the above dataset, and the results of deduplication show that the directional method (the rest two (not shown) are the same as well) from either software performs identically. Other methods are shown in Figure 2.
 
@@ -173,4 +176,4 @@ Contact
 Homepage: https://www.ndorms.ox.ac.uk/team/adam-cribbs
 
 .. |image0| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/ave_eds.jpg?raw=true
-.. |image1| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/ave_eds.jpg?raw=true
+.. |image1| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/all_ave_eds.jpg?raw=true

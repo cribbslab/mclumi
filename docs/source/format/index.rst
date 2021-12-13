@@ -5,6 +5,7 @@
 
 Data Format
 ===========
+Mclumi has a few number of requirements for data taken as input and output. Users can enable the basic use of Mclumi by looking at the input format and output format sections.
 
 .. toctree::
    :maxdepth: 2

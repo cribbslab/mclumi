@@ -1,5 +1,5 @@
-Genomic loci
-============
+Multiple genomic loci
+=====================
 
 Different from the case used for a single genomic locus, this module allows users to deduplicate PCR artifacts/UMIs based on a set of genomic position annotations on a large scale. The usage is described below. As an example, you can download a clip of ChIP-seq data used also in UMI-tools. The dataset contains 1,175,027 reads with 20,683 raw unique UMI sequences and 12,047 genomic positions tagged by running the UMI-tools ``get_bundles`` method that is also adopted by Mclumi.
 

@@ -29,6 +29,7 @@ It provides a collection of modules, including 4 main modules, ``dedup_basic``, 
    installation
    tutorial/index
    format/index
+   method/index
    modules
 
 Features

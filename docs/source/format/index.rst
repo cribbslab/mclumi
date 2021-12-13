@@ -13,11 +13,3 @@ Mclumi has a few number of requirements for data taken as input and output. User
 
    input_format
    output_format
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

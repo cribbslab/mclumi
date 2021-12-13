@@ -18,12 +18,3 @@ In the tutorials, we will go through a few number of using Mclumi. For data prep
    genomic_loci
    scRNAseq
 
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

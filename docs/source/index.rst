@@ -8,8 +8,7 @@ Mclumi Homepage
 
 |image0| |image1| |image2| |image3| |Documentation Status| |Downloads|
 
-Mclumi is a toolkit developed by Markov clustering (MCL) network-based algorithms for precisely localizing unique UMIs and thus correcting UMI errors. Mclumi is a Python implementation with interaction between methods and modules through object-oriented programming (OOP).
-It provides a collection of modules, including 4 main modules, ``dedup_basic``, ``dedup_pos``, ``dedup_gene``, and ``dedup_sc_`` and 1 addition module ``trim``. Please see details here_. For UMI deduplication, each main module includes 7 algorithms ``unique``, cluster, ``adjacency``, ``directional``, ``mcl``, ``mcl_ed``, and ``mcl_val`` that take as input a bam file and output a deduplicated bam file and another 2 summary files. Every module in Mclumi can be run internally (Python inline) or externally (CLI).
+Mclumi is a toolkit developed by adopting Markov clustering (MCL) network-based algorithms for precisely localizing unique UMIs that thus correct UMI errors. Mclumi is a Python implementation based on object-oriented programming (OOP) with interaction between modules through objects. It provides a collection of modules, including 4 main modules, ``dedup_basic``, ``dedup_pos``, ``dedup_gene``, and ``dedup_sc_`` and 1 addition module ``trim``. Please see details here_. For UMI deduplication, each main module includes 7 algorithms ``unique``, ``cluster``, ``adjacency``, ``directional``, ``mcl``, ``mcl_ed``, and ``mcl_val`` that take as input a bam file and output a deduplicated bam file and another 2 summary files. Every module in Mclumi can be run internally (Python inline) or externally (CLI).
 
 .. _here: https://mclumi.readthedocs.io/en/latest/tutorial/index.html
 

@@ -4,12 +4,7 @@ Quick start guide
 Overview
 --------
 
-We set up a quick start guide to walk you through an example to use
-Mclumi. Mclumi provides 7 methods for UMI deduplication, that is,
-``unique``, ``cluster``, ``adjacency``, ``directional``,
-``mcl``, ``mcl_ed``, and ``mcl_val``, and 4 modules for
-handling 4 types of application scenarios, that is, a single genomic
-locus, genomic positions, genes, and cell-by-gene types.
+We set up a quick start guide to walk you through an example to use Mclumi. Mclumi provides 7 methods for UMI deduplication, that is, ``unique``, ``cluster``, ``adjacency``, ``directional``, ``mcl``, ``mcl_ed``, and ``mcl_val``, and 4 modules for handling 4 types of application scenarios, that is, a single genomic locus, genomic positions, genes, and cell-by-gene types.
 
 Documentation
 -------------
@@ -114,15 +109,7 @@ Command-Line Interface (CLI)
 Deduplication according to genomic positions
 --------------------------------------------
 
-``dedup_pos`` is taken as an example. It allows users to deduplicate
-PCR artifacts/UMIs based on a set of genomic position annotations on a
-large scale. In the quick start guide, we omitted some data
-preprocessing procedures and start from introduing a dataset (a clip of
-ChIP-seq data used also in UMI-tools) contains 1,175,027 reads with
-20,683 raw unique UMI sequences and 12,047 genomic positions tagged by
-running the UMI-tools ``get_bundles`` method that is also adopted by
-Mclumi in which it can be accessed by the ``mclumi.align.BundlePos``
-module.
+``dedup_pos`` is taken as an example. It allows users to deduplicate PCR artifacts/UMIs based on a set of genomic position annotations on a large scale. In the quick start guide, we omitted some data preprocessing procedures and start from introduing a dataset (a clip of ChIP-seq data used also in UMI-tools) contains 1,175,027 reads with 20,683 raw unique UMI sequences and 12,047 genomic positions tagged by running the UMI-tools ``get_bundles`` method that is also adopted by Mclumi in which it can be accessed by the  ``mclumi.align.BundlePos`` module.
 
 Downloading data
 ----------------
@@ -168,27 +155,15 @@ Running Mclumi
 Result interpretation
 ---------------------
 
-The Mcluim dedup_pos module returns two files as follows. 1.
-{method}_ave_ed_pos_bin.txt 2. {method}_dedup_sum.txt
+The Mcluim dedup_pos module returns two files as follows.
+1. ``{method}_ave_ed_pos_bin.txt``
+2. ``{method}_dedup_sum.txt``
 
-where {method} represents the unique, adjacency, directional, mcl,
-mcl_val, or mcl_ed method, correspondingly. {method}_ave_ed_pos_bin.txt
-summerizes the total number of genomic positions with respect to their
-average edit distances (Figures 1 and 2). Further explanations can be
-found on .
+where {method} represents the ``unique``, ``adjacency``, ``directional``, ``mcl``, ``mcl_val``, or ``mcl_ed`` method, correspondingly. ``{method}_ave_ed_pos_bin.txt`` mainly summerizes the total number of genomic positions with respect to their average edit distances (Figures 1 and 2). Further explanations can be found on .
 
-All methods in UMI-tools are reconstructed in Mcluim by implementing the
-cluster and adjacency methods based on the breadth first search (BFS)
-algorithm and the directional method based on the depth first search
-(DFS) algorithm. After then, in order to test whether these methods are
-implemented correctly, the two software packages were performed on the
-above dataset, and the results of deduplication show that the
-directional method (the rest two (not shown) are the same as well) from
-either software performs identically. Other methods are shown in Figure
-2.
+All methods in UMI-tools are reconstructed in Mcluim by implementing the ``cluster`` and ``adjacency`` methods based on the breadth first search (BFS) algorithm and the directional method based on the depth first search (DFS) algorithm. After then, in order to test whether these methods are implemented correctly, the two software packages were performed on the above dataset, and the results of deduplication show that the directional method (the rest two (not shown) are the same as well) from either software performs identically. Other methods are shown in Figure 2.
 
-|image0| Figure 1. Comparison of performance of the UMI-tools
-directional method and the Mclumi directional method.
+|image0| Figure 1. Comparison of performance of the UMI-tools directional method and the Mclumi directional method.
 
 |image1| Figure 2. Performance of all methods.
 
@@ -197,5 +172,5 @@ Contact
 
 Homepage: https://www.ndorms.ox.ac.uk/team/adam-cribbs
 
-.. |image0| image:: https://i.imgur.com/iNd43NT.jpg
-.. |image1| image:: https://imgur.com/2SZDsFz.jpg
+.. |image0| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/ave_eds.jpg
+.. |image1| image:: https://github.com/cribbslab/mclumi/blob/main/imgs/all_ave_eds.jpg

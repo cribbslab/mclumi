@@ -715,12 +715,12 @@ if __name__ == "__main__":
         # method='unique',
         # method='cluster',
         # method='adjacency',
-        method='directional',
+        # method='directional',
         # method='mcl',
         # method='mcl_val',
-        # method='mcl_ed',
+        method='mcl_ed',
 
-        bam_fpn=to('example/data/RM82CLK1_S3_featurecounts_gene_sorted.bam'),
+        bam_fpn=to('example/data/RM82_CLK1_DMSO_2_XT.bam'),
         gene_assigned_tag='XT',
         gene_is_assigned_tag='XS',
         mcl_fold_thres=1.6,
@@ -730,5 +730,5 @@ if __name__ == "__main__":
         verbose=True,
         ed_thres=7,
         is_sv=False,
-        sv_fpn=to('example/data/gene/assigned_sorted_dedup.bam'),
+        sv_fpn=to('example/data/RM82_CLK1_DMSO_2_XT_dedup.bam'),
     )

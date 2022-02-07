@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="ws-mcl" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="lh_mcl" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="ws-mcl">
+      <paths name="lh_mcl">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/students/j.sun/store/software/us/mcl" local="$PROJECT_DIR$" />
+            <mapping deploy="/home/jsun/software/mclumi" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

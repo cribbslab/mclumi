@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="9b1a0cd2-7806-4f11-9d5f-9ad12ed61c7c" name="ws-mcl (project level)">
-        <fileTransfer accessType="SFTP" host="10.152.30.170" port="22" sshConfigId="7eb8795e-aaca-45c9-a8e0-95afa1a0ddb6" sshConfig="ws-mcl" />
+        <fileTransfer accessType="SFTP" host="192.168.0.2" port="22" sshConfigId="46a82fcf-458d-49db-9b59-29842abdf1c9" sshConfig="lh_mcl" />
       </webServer>
     </option>
   </component>

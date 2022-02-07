@@ -95,7 +95,9 @@ class read(object):
             # print(read_tags)
             rt_dict = {k: v for k, v in read_tags}
             rt_keys = [*rt_dict.keys()]
+            # print(rt_keys)
             tag_keys = [rt_dict[k] if k in rt_keys else 'None' for k in tags]
+            # print(tag_keys)
             vignette = [
                 id,
                 read.query_name,
@@ -130,6 +132,11 @@ class read(object):
                 'read',
             ] + tags,
         )
+        if 'XS' in tags and 'XT' in tags:
+            stat_XT = df['XS'].value_counts()
+            if 'None' in stat_XT.keys():
+                if stat_XT['None'] == df.shape[0]:
+                    df['XS'] = df['XT'].apply(lambda x: 'Assigned' if x != 'None' else 'Unassigned')
         # print(df['XA'].loc[df['reference_id'] != -1].shape)
         # print(df['MD'].loc[df['MD'] != 'None'].shape)
         # print(df['NM'].loc[df['NM'] != 'None'].shape)
@@ -244,15 +251,18 @@ if __name__ == "__main__":
     umikit = read(
         # bam_fpn=to('example/data/example.bam'),
         # bam_fpn=to('example/data/example_buddle.bam'),
-        to('example/data/assigned_sorted.bam')
+        # to('example/data/assigned_sorted.bam')
         # to('example/data/assigned_sorted_dedup.bam')
         # bam_fpn=to('example/data/deduplicated.bam'),
         # bam_fpn=to('example/data/RM82CLK1_S3_featurecounts_gene_sorted.bam'),
+        bam_fpn=to('example/data/RM82_CLK1_DMSO_2_XT.bam'),
     )
 
     # df = umikit.todf(tags=['PO'])
-    df = umikit.todf(tags=['XS', 'XT'])
-    print(df)
-
-    df = df.loc[df['XS'] == 'Assigned']
+    # df = umikit.todf(tags=['XS', 'XT'])
+    # print(df)
+    #
+    # df = df.loc[df['XS'] == 'Assigned']
+    # print(df)
+    df = umikit.todf(tags=['XT', 'XS'])
     print(df)

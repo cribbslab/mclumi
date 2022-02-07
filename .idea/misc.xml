@@ -69,5 +69,5 @@
       <textMaps />
     </LinkMapSettings>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.7 (mclumi)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Remote Python 3.8.12 (sftp://jsun@192.168.0.2:22/home/jsun/anaconda3/envs/mcl/bin/python)" project-jdk-type="Python SDK" />
 </project>

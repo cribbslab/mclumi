@@ -2,8 +2,9 @@
 from .Fixed import *
 from .Filter import *
 from .Reader import *
-from .SeqRuleOut import *
 from .Template import *
+from .BCRuleOut import *
+from .SeqRuleOut import *
 from .UMIRuleOut import *
 
 # ## /*** block. local ***/

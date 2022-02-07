@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ec5f391-0433-4316-a31e-45b1a58ec0de" name="Changes" comment="" />
+    <list default="true" id="5ec5f391-0433-4316-a31e-45b1a58ec0de" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupGene.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupGene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/external/UMItoolsSamMethods.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/external/UMItoolsSamMethods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/trim/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/trim/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../ntm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resimpy" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -86,7 +92,11 @@
       <workItem from="1638013794763" duration="2458000" />
       <workItem from="1639094775833" duration="23509000" />
       <workItem from="1639417071692" duration="922000" />
-      <workItem from="1639428781779" duration="1361000" />
+      <workItem from="1639428781779" duration="2178000" />
+      <workItem from="1641306517704" duration="393000" />
+      <workItem from="1641307202798" duration="22866000" />
+      <workItem from="1642005038740" duration="619000" />
+      <workItem from="1644233745132" duration="3173000" />
     </task>
     <servers />
   </component>

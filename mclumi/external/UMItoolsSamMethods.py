@@ -12,7 +12,7 @@ import collections
 import re
 import random
 from functools import partial
-import umi_tools.Utilities as U
+# import umi_tools.Utilities as U
 
 
 def get_barcode_read_id(read, cell_barcode=False, sep="_"):

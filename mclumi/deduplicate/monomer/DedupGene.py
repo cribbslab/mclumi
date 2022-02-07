@@ -15,7 +15,8 @@ from mclumi.util.Writer import writer as gwriter
 from mclumi.util.Hamming import hamming
 from mclumi.util.Number import number as rannum
 from mclumi.util.Console import console
-from mclumi.deduplicate.monomer.Build_test import build as umibuild
+from mclumi.deduplicate.monomer.Build import build as umibuild
+# from mclumi.deduplicate.monomer.Build_test import build as umibuild
 from mclumi.deduplicate.monomer.Cluster import cluster as umimonoclust
 from mclumi.deduplicate.monomer.Adjacency import adjacency as umitoolmonoadj
 from mclumi.deduplicate.monomer.Directional import directional as umitoolmonodirec
@@ -708,8 +709,8 @@ if __name__ == "__main__":
     from mclumi.Path import to
 
     umikit = dedupGene(
-        mode='internal',
-        # mode='external',
+        # mode='internal',
+        mode='external',
 
         # method='unique',
         # method='cluster',

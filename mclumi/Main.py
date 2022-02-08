@@ -15,7 +15,7 @@ def main():
     parser.add_argument(
         "tool",
         type=str,
-        help='trim, dedup_basic, dedup_pos, dedup_gene, dedup_sc',
+        help='trim, dedup_basic, dedup_pos, dedup_gene, dedup_sc, dechimeric',
     )
     parser.add_argument(
         "--read_structure", "-rs",
@@ -52,14 +52,14 @@ def main():
         metavar='method',
         dest='m',
         type=str,
-        help='str - a dedup method: unique | cluster | adjacency | directional | mcl | mcl_ed | mcl_val',
+        help='str - a dedup method: unique | cluster | adjacency | directional | mcl | mcl_ed | mcl_val | dechimeric',
     )
     parser.add_argument(
         "--input_bam", "-ibam",
         metavar='input_bam',
         dest='ibam',
         type=str,
-        help='str - input a bam file curated by requirements of different dedup modules: dedup_basic, dedup_pos, dedup_gene, dedup_sc',
+        help='str - input a bam file curated by requirements of different dedup modules: dedup_basic, dedup_pos, dedup_gene, dedup_sc, dechimeric',
     )
     parser.add_argument(
         "--edit_dist", "-ed",
@@ -100,6 +100,14 @@ def main():
         default=1.1,
         type=float,
         help='float - a fold threshold for MCL at a range of (1, l) where l is the length of a UMI.',
+    )
+    parser.add_argument(
+        "--tc_thres", "-tcthres",
+        metavar='tc_thres',
+        dest='tcthres',
+        default=5,
+        type=float,
+        help='float - a count threshold for removing chimerical reads made during PCR amplification',
     )
     parser.add_argument(
         "--is_sv", "-issv",
@@ -238,6 +246,20 @@ def main():
             raise ValueError
         # cmd = 'python ' + fpnf + ' -h'
         cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -gt ' + str(args.gt) + ' -gist ' + str(args.gist) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -obam ' + args.obam + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
+        # print(cmd)
+        s = subprocess.Popen(cmd, shell=True)
+        s.communicate()
+    if args.tool == 'dechimeric':
+        fpnf = os.path.dirname(__file__) + '/deduplicate/trimer/Dechimeric.py'
+        # print(fpnf)
+        if args.ibam == None:
+            print('Attention! the ibam option must be added to your command for the dechimeric module.')
+            raise ValueError
+        if args.m == None:
+            print('Attention! the m option must be added to your command for the dechimeric module.')
+            raise ValueError
+        # cmd = 'python ' + fpnf + ' -h'
+        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -tcthres ' + str(args.tcthres) + ' -obam ' + args.obam + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
         # print(cmd)
         s = subprocess.Popen(cmd, shell=True)
         s.communicate()

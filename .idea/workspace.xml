@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ec5f391-0433-4316-a31e-45b1a58ec0de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mclumi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mclumi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mclumi/align/Read.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/align/Read.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupGene.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupGene.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
@@ -28,7 +23,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="206tDr55cdNnk5g4JOY27STD32s" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -48,7 +45,7 @@
       <recent name="D:\Document\Programming\Python\deepbio\symphony\github\mclumi\mclumi\external" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.DedupGene">
+  <component name="RunManager" selected="Python.Read">
     <configuration name="DedupGene" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="mclumi" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -95,8 +92,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.DedupGene" />
         <item itemvalue="Python.Read" />
+        <item itemvalue="Python.DedupGene" />
       </list>
     </recent_temporary>
   </component>
@@ -124,7 +121,7 @@
       <workItem from="1641306517704" duration="393000" />
       <workItem from="1641307202798" duration="22866000" />
       <workItem from="1642005038740" duration="619000" />
-      <workItem from="1644233745132" duration="12763000" />
+      <workItem from="1644233745132" duration="27177000" />
     </task>
     <servers />
   </component>
@@ -132,7 +129,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/mclumi$Read.coverage" NAME="Read Coverage Results" MODIFIED="1644261284267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/align" />
+    <SUITE FILE_PATH="coverage/mclumi$Read.coverage" NAME="Read Coverage Results" MODIFIED="1644273155374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/align" />
     <SUITE FILE_PATH="coverage/mclumi$Read_umitools.coverage" NAME="BundlePos Coverage Results" MODIFIED="1635381878811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/align" />
     <SUITE FILE_PATH="coverage/mclumi$DedupGene.coverage" NAME="DedupGene Coverage Results" MODIFIED="1644261366893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/deduplicate/monomer" />
     <SUITE FILE_PATH="coverage/mclumi$BundlePos.coverage" NAME="BundlePos Coverage Results" MODIFIED="1636029693541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/align" />

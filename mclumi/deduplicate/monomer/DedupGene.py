@@ -608,7 +608,7 @@ class dedupGene():
             return 'no'
 
     def correct(self, umi):
-        vernier = [i for i in range(36) if i % 3 == 0]
+        vernier = [i for i in range(30) if i % 3 == 0]
         umi_trimers = [umi[v: v+3] for v in vernier]
         # umi_trimers = textwrap.wrap(umi, 3)
         t = []

@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="mclumix",
     # version="0.0.6",
-    version="0.0.0.0.6",
+    version="0.0.0.0.8",
     # name="tfg666",
     # version="0.0.0.0.44",
     keywords=("pip", "mclumi"),

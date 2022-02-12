@@ -1,35 +1,25 @@
 Output format
 =============
 
-Mclumi provides three output files after running each of the
-``dedup_basic``, ``dedup_pos``, ``dedup_gene``, and ``dedup_sc`` modules, with the
-following names.
+Mclumi provides three output files after running each of the ``dedup_basic``, ``dedup_pos``, ``dedup_gene``, and ``dedup_sc`` modules, with the following names.
 
 1. ``{method}_ave_ed_pos_bin.txt``
 2. ``{method}_dedup_sum.txt``
 3. ``{name}_dedup.bam``
 
-Please note that ``{method}`` above refers to ``{uniq}``, ``{cc}``, ``{adj}``, ``{direc}``,
-``{mcl}``, ``{mcl_val}``, or ``{mcl_ed}`` standing for the ``unique``, ``adjacency``,
-``directional``, ``mcl``, ``mcl_val``, or ``mcl_ed`` method, correspondingly. ``{name}`` can
-be designated by users. Result format is spelt out below.
+Please note that ``{method}`` above refers to ``{uniq}``, ``{cc}``, ``{adj}``, ``{direc}``, ``{mcl}``, ``{mcl_val}``, or ``{mcl_ed}`` standing for the ``unique``, ``adjacency``, ``directional``, ``mcl``, ``mcl_val``, or ``mcl_ed`` method, correspondingly. ``{name}`` can be designated by users. Result format is spelt out below.
 
 1. Single genomic position/gene/gene-by-cell result format
 ----------------------------------------------------------
 
-The results will be obtained after running the module of ``dedup_basic``,
-with a ``{method}_ave_ed_pos_bin.txt`` file returned to only indicate
-deduplicated UMI counts across all reads in a given bam file and a
-``{method}_dedup_sum.txt`` file returned for the total number of reads
-sharing an average edit distance.
+After running module ``dedup_basic``, the results will be stored in a ``{method}_ave_ed_pos_bin.txt`` file and a ``{method}_dedup_sum.txt`` file indicating deduplicated UMI counts across all reads in a given bam file.
 
 2. Genomic position result format
 ---------------------------------
 
-Data at the third row is interpreted as: the number of genomic positions
-observed with an average edit distance 3 between UMIs is 4.
-
 ``{method}_ave_ed_pos_bin.txt``
+
+Data at the third row is interpreted as: the number of genomic positions observed with an average edit distance 3 between UMIs is 4.
 
 ============= ======
 edit distance number
@@ -47,6 +37,8 @@ edit distance number
 -  -1.0 represents that only one unique umi seen at a single genomic
    position; in total there are 3652 genomic positions seen with one
    unique umi.
+
+``{method}_dedup_sum.txt``
 
 +------------+--------+-----+---------+---------------+---------------+
 | No.        | {met   | a   | uniq_   | dedup_        | dedup_        |
@@ -76,12 +68,11 @@ edit distance number
 3. bulk RNA-seq result format
 -----------------------------
 
+``{method}_ave_ed_pos_bin.txt``
+
 Spelling out results
 
-Data at the third row is interpreted as: the number of gene types
-observed with an average edit distance 3 between UMIs is 4.
-
-``{method}_ave_ed_pos_bin.txt``
+Data at the third row is interpreted as: the number of gene types observed with an average edit distance 3 between UMIs is 4.
 
 ============= ======
 edit distance number
@@ -98,12 +89,14 @@ edit distance number
 -  -1.0 represents that only one unique umi seen at a single gene type;
    in total there are 3652 genomic positions seen with one unique umi.
 
+``{method}_dedup_sum.txt``
+
 +------------+--------+-----+---------+---------------+---------------+
 | type       | {met   | a   | uniq_   | dedup_        | dedup_        |
 |            | hod}_u | ve_ | umi_len | uniq_diff_pos | read_diff_pos |
 |            | mi_len | eds |         |               |               |
 +============+========+=====+=========+===============+===============+
-| ENSG0      | 5      | 1   | 5       | 0             | 0             |
+| ENSG0     | 5      | 1   | 5       | 0             | 0             |
 | 0000000003 |        | 1.0 |         |               |               |
 +------------+--------+-----+---------+---------------+---------------+
 | ENSG0      | 7      | 1   | 8       | 1             | 1             |
@@ -145,8 +138,9 @@ edit distance number
 
 -  the **1st** column: average edit distance between UMIs at
    gene-by-cell types
--  the **2nd** column: number of gene-by-cell types observed with those
-   average edit distances, respectively
+-  the **2nd** column: number of gene-by-cell types observed with those average edit distances, respectively
+
+``{method}_dedup_sum.txt``
 
 +--------------------------+-------+---+------+-----------+-----------+
 | type                     | {     | a | uniq | d         | d         |

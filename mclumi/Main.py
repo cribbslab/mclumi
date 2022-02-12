@@ -52,7 +52,7 @@ def main():
         metavar='method',
         dest='m',
         type=str,
-        help='str - a dedup method: unique | cluster | adjacency | directional | mcl | mcl_ed | mcl_val | dechimeric',
+        help='str - a dedup method: unique | cluster | adjacency | directional | mcl | mcl_ed | mcl_val | dc_by_cnt',
     )
     parser.add_argument(
         "--input_bam", "-ibam",
@@ -122,7 +122,15 @@ def main():
         metavar='output_bam',
         dest='obam',
         type=str,
-        help='str - output UMI-deduplicated summary statistics to a txt file.',
+        help='str - output a bam file containing UMI-deduplicated or dechimerical reads, or output other summary statistics.',
+    )
+    parser.add_argument(
+        "--output_bam_c", "-obam_c",
+        metavar='output_bam_c',
+        dest='obam_c',
+        required=True,
+        type=str,
+        help='str - output a bam file containing chimerical reads.',
     )
     parser.add_argument(
         "--verbose", "-vb",
@@ -259,7 +267,7 @@ def main():
             print('Attention! the m option must be added to your command for the dechimeric module.')
             raise ValueError
         # cmd = 'python ' + fpnf + ' -h'
-        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -tcthres ' + str(args.tcthres) + ' -obam ' + args.obam + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
+        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -tcthres ' + str(args.tcthres) + ' -obam ' + args.obam + ' -obam_c ' + args.obam_c + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
         # print(cmd)
         s = subprocess.Popen(cmd, shell=True)
         s.communicate()

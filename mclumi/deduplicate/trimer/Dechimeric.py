@@ -20,7 +20,7 @@ from mclumi.util.Console import console
 
 class dechimeric():
 
-    def __init__(self, bam_fpn, method, mode='internal', tc_thres=None, is_sv=True, sv_fpn='./dechimerical.bam', verbose=False):
+    def __init__(self, bam_fpn, method, mode='internal', tc_thres=None, is_sv=True, sv_fpn='./dechimerical.bam', sv_chimeric_fpn='./dechimerical.bam', verbose=False):
         """
         Parameters
         ----------
@@ -48,6 +48,7 @@ class dechimeric():
             self.tc_thres = tc_thres
             self.is_sv = is_sv
             self.sv_fpn = sv_fpn
+            self.sv_chimeric_fpn = sv_chimeric_fpn
             self.verbose = verbose
             print('run Mclumi internally.')
         else:
@@ -60,7 +61,7 @@ class dechimeric():
                 dest='m',
                 required=True,
                 type=str,
-                help='str - a dedup method: unique | cluster | adjacency | directional | mcl | mcl_ed | mcl_val',
+                help='str - a dedup method: dc_by_cnt ',
             )
             self.parser.add_argument(
                 "--input_bam", "-ibam",
@@ -92,7 +93,15 @@ class dechimeric():
                 dest='obam',
                 required=True,
                 type=str,
-                help='str - output UMI-de-duplicated summary statistics to a bam file.',
+                help='str - output a bam file containing de-chimerical reads.',
+            )
+            self.parser.add_argument(
+                "--output_bam_c", "-obam_c",
+                metavar='output_bam_c',
+                dest='obam_c',
+                required=True,
+                type=str,
+                help='str - output a bam file containing chimerical reads.',
             )
             self.parser.add_argument(
                 "--verbose", "-vb",
@@ -108,13 +117,11 @@ class dechimeric():
             self.bam_fpn = args.ibam
             self.is_sv = args.issv
             self.sv_fpn = args.obam
+            self.sv_chimeric_fpn = args.obam_c
             self.verbose = args.vb
 
         self.console = console()
         self.console.verbose = self.verbose
-
-        self.dirname = os.path.dirname(self.sv_fpn) + '/'
-        # sys.stdout = open(self.dirname + self.method + '_log.txt', 'w')
 
         self.alireader = aliread(bam_fpn=self.bam_fpn, verbose=self.verbose)
         self.df_bam = self.alireader.todf(tags=[])
@@ -123,31 +130,91 @@ class dechimeric():
         self.console.print('======># of reads with qualified chrs: {}'.format(self.df_bam.shape[0]))
         # self.df_bam = self.df_bam.loc[self.df_bam[self.gene_is_assigned_tag] == 'Assigned']
 
+        # self.df_bam['query_name'].apply(lambda x: print(x))
         self.df_bam['umi_l'] = self.df_bam['query_name'].apply(lambda x: x.split('_')[1])
         self.df_bam['umi_r'] = self.df_bam['query_name'].apply(lambda x: x.split('_')[2])
         self.df_bam['umi'] = self.df_bam.apply(lambda x: x['umi_l'] + x['umi_r'], axis=1)
-        self.cnt_paired_umis = self.df_bam['umi'].value_counts()
-        if self.tc_thres == -1:
-            self.tc_thres = self.cnt_paired_umis.quantile(.1)
-        self.hash_paired_umis = self.cnt_paired_umis.to_dict()
-        self.df_bam['chimeric_mark'] = self.df_bam['umi'].apply(lambda x: 1 if self.hash_paired_umis[x] > self.tc_thres else 0)
-        self.nonchimerical_ids = self.df_bam['chimeric_mark'].loc[self.df_bam['chimeric_mark'] == 1].index
-        self.console.print('======># of chimerical reads detected: {}'.format(self.df_bam.shape[0] - self.nonchimerical_ids.shape[0]))
+        if self.method == 'dc_by_cnt':
+            self.cnt_paired_umis = self.df_bam['umi'].value_counts()
+            if self.tc_thres == -1:
+                self.tc_thres = self.cnt_paired_umis.quantile(.1)
+            self.console.print('======>Summary report:')
+            self.console.print('==================>the threshold you select is {}'.format(self.tc_thres))
+            self.console.print('==================># of unique UMIs: {}'.format(self.cnt_paired_umis.shape[0]))
+            self.console.print('==================>{} paired-UMI(s) has(ve) the highest count {} | an example of the paired-UMI(s) is: {}'.format(
+                self.cnt_paired_umis.loc[self.cnt_paired_umis == self.cnt_paired_umis.max()].shape[0],
+                self.cnt_paired_umis.max(),
+                self.cnt_paired_umis.idxmax(),
+            ))
+            self.console.print('==================>{} paired-UMI(s) has(ve) the highest UMI count {} | an example of the paired-UMI(s) is: {}'.format(
+                self.cnt_paired_umis.loc[self.cnt_paired_umis == self.cnt_paired_umis.min()].shape[0],
+                self.cnt_paired_umis.min(),
+                self.cnt_paired_umis.idxmin(),
+            ))
+            self.console.print('==================>{pp1} paired-UMI(s) smaller than or equal to thres {tc_thres} and {pp2} paired-UMI(s) above thres {tc_thres}'.format(
+                pp1=self.cnt_paired_umis.loc[self.cnt_paired_umis <= self.tc_thres].shape[0],
+                pp2=self.cnt_paired_umis.loc[self.cnt_paired_umis > self.tc_thres].shape[0],
+                tc_thres=self.tc_thres,
+            ))
+
+            self.hash_paired_umis = self.cnt_paired_umis.to_dict()
+            self.df_bam['chimeric_mark'] = self.df_bam['umi'].apply(lambda x: 1 if self.hash_paired_umis[x] > self.tc_thres else 0)
+            self.chimerical_ids = self.df_bam['chimeric_mark'].loc[self.df_bam['chimeric_mark'] == 0].index
+            self.nonchimerical_ids = self.df_bam['chimeric_mark'].loc[self.df_bam['chimeric_mark'] == 1].index
+            # print(self.decompose(list_nd=self.nonchimerical_ids.values))
+            self.console.print('==================># of chimerical reads detected: {}'.format(self.chimerical_ids.shape[0]))
+            self.console.print('==================># of non-chimerical reads detected: {}'.format(self.nonchimerical_ids.shape[0]))
 
         self.aliwriter = aliwrite(df=self.df_bam)
         self.aliwriter.is_sv = self.is_sv
 
         dechimeric_write_stime = time.time()
+        self.console.print('======>start writing...')
+
+        self.dirname = os.path.dirname(self.sv_fpn) + './'
+        self.console.print('=========>writing paired-UMI cnt summary file...')
+        self.gwriter.generic(
+            df=self.cnt_paired_umis.to_frame(name='cnt'),
+            sv_fpn=self.dirname + 'cnt_summary.txt',
+            header=True,
+            index=True,
+        )
+        self.console.print('=========>writing dechimerical reads...')
         self.aliwriter.tobam(
-            tobam_fpn=self.dirname + self.method + '_dechimeric.bam',
+            tobam_fpn=self.sv_fpn,
             tmpl_bam_fpn=self.bam_fpn,
             whitelist=self.decompose(list_nd=self.nonchimerical_ids.values),
+        )
+        self.console.print('=========>writing chimerical reads...')
+        self.aliwriter.tobam(
+            tobam_fpn=self.sv_chimeric_fpn,
+            tmpl_bam_fpn=self.bam_fpn,
+            whitelist=self.decompose(list_nd=self.chimerical_ids.values),
         )
         self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dechimeric_write_stime))
 
     def decompose(self, list_nd):
         list_md = []
         for i in list_nd:
-            list_md = list_md + i
-        self.console.print('======># of the total reads left after deduplication: {}'.format(len(list_md)))
+            list_md = list_md + [i]
+        # self.console.print('======># of the total reads left after the dechimeric process: {}'.format(len(list_md)))
         return list_md
+
+
+if __name__ == "__main__":
+    from mclumi.Path import to
+
+    umikit = dechimeric(
+        # mode='internal',
+        mode='external',
+
+        method='dc_by_cnt',
+
+        tc_thres=1,
+
+        bam_fpn=to('example/data/TSO_polyAUMI_gene_sorted.bam'),
+        verbose=True,
+        is_sv=True,
+        sv_fpn=to('example/data/dechimeric.bam'),
+        sv_chimeric_fpn=to('example/data/chimeric.bam'),
+    )

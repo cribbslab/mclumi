@@ -28,6 +28,7 @@ class write(object):
             tmpl_bam = pysam.AlignmentFile(tmpl_bam_fpn, "rb")
             write_to_bam = pysam.AlignmentFile(tobam_fpn, "wb", template=tmpl_bam)
             fs = self.df.loc[self.df['id'].isin(whitelist)]['read']
+            # print(fs)
             for i in fs:
                 # print(i)
                 write_to_bam.write(i)

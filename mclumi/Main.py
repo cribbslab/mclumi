@@ -125,10 +125,25 @@ def main():
         help='str - output a bam file containing UMI-deduplicated or dechimerical reads, or output other summary statistics.',
     )
     parser.add_argument(
+        "--output_dedup_sum", "-odsum",
+        metavar='output_dedup_sum',
+        dest='odsum',
+        default='None',
+        type=str,
+        help='str - output deduplicated statistics (including count matrix) to a file.',
+    )
+    parser.add_argument(
+        "--output_ave_ed", "-oaed",
+        metavar='output_ave_ed',
+        dest='oaed',
+        default='None',
+        type=str,
+        help='str - output statistics of average edit distances to a file.',
+    )
+    parser.add_argument(
         "--output_bam_c", "-obam_c",
         metavar='output_bam_c',
         dest='obam_c',
-        required=True,
         type=str,
         help='str - output a bam file containing chimerical reads.',
     )
@@ -230,7 +245,7 @@ def main():
             print('Attention! the gene_assigned_tag option must be added to your command for the dedup_gene module.')
             raise ValueError
         # cmd = 'python ' + fpnf + ' -h'
-        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -gt ' + str(args.gt) + ' -gist ' + str(args.gist) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -obam ' + args.obam + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
+        cmd = 'python ' + fpnf + ' -m ' + args.m + ' -ibam ' + args.ibam + ' -ed ' + str(args.ed) + ' -gt ' + str(args.gt) + ' -gist ' + str(args.gist) + ' -fthres ' + str(args.fthres) + ' -infv ' + str(args.infv) + ' -expv ' + str(args.expv) + ' -itern ' + str(args.itern) + ' -obam ' + args.obam + ' -odsum ' + args.odsum + ' -oaed ' + args.oaed + ' -issv ' + str(args.issv) + ' -vb ' + str(args.vb)
         # print(cmd)
         s = subprocess.Popen(cmd, shell=True)
         s.communicate()

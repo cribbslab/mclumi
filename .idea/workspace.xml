@@ -5,8 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/source/format/output_format.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/format/output_format.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mclumi/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mclumi/align/Write.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/align/Write.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/trimer/Dechimeric.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/trimer/Dechimeric.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupBasic.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupBasic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupGene.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupGene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupPos.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupPos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupSC.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupSC.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +149,7 @@
       <workItem from="1641307202798" duration="22866000" />
       <workItem from="1642005038740" duration="619000" />
       <workItem from="1644233745132" duration="28611000" />
-      <workItem from="1644600918640" duration="10215000" />
+      <workItem from="1644600918640" duration="22775000" />
     </task>
     <servers />
   </component>

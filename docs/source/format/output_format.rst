@@ -92,9 +92,9 @@ edit distance number
 ``{method}_dedup_sum.txt``
 
 +------------+--------+-----+---------+---------------+---------------+
-| type       | {met   | a   | uniq_   | dedup_        | dedup_        |
-|            | hod}_u | ve_ | umi_len | uniq_diff_pos | read_diff_pos |
-|            | mi_len | eds |         |               |               |
+| type       | {met   | ave_eds   | uniq_   | dedup_        | dedup_        |
+|            | hod}_u |  | umi_len | uniq_diff_pos | read_diff_pos |
+|            | mi_len |  |         |               |               |
 +============+========+=====+=========+===============+===============+
 | ENSG0     | 5      | 1   | 5       | 0             | 0             |
 | 0000000003 |        | 1.0 |         |               |               |

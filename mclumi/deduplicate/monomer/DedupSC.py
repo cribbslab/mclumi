@@ -150,7 +150,7 @@ class dedupSC():
                 dest='obam',
                 required=True,
                 type=str,
-                help='str - output UMI-de-duplicated summary statistics to a bam file.',
+                help='str - output deduplicated reads to a bam file.',
             )
             self.parser.add_argument(
                 "--verbose", "-vb",

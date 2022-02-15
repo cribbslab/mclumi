@@ -121,6 +121,7 @@ def main():
         "--output_bam", "-obam",
         metavar='output_bam',
         dest='obam',
+        default='None',
         type=str,
         help='str - output a bam file containing UMI-deduplicated or dechimerical reads, or output other summary statistics.',
     )

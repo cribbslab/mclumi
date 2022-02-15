@@ -145,7 +145,8 @@ class dedupGene():
                 "--output_bam", "-obam",
                 metavar='output_bam',
                 dest='obam',
-                required=True,
+                # required=True,
+                default='None',
                 type=str,
                 help='str - output deduplicated reads to a bam file.',
             )
@@ -313,15 +314,16 @@ class dedupGene():
                 )
                 self.console.print('======>finish writing the summary statistics in {:.2f}s'.format(time.time() - dedup_sum_stat_write_stime))
 
-            self.console.print('======>start writing deduplicated reads to BAM...')
-            dedup_reads_write_stime = time.time()
-            self.df['uniq_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='uniq_repr_nodes'), axis=1)
-            self.aliwriter.tobam(
-                tobam_fpn=self.sv_fpn,
-                tmpl_bam_fpn=self.bam_fpn,
-                whitelist=self.decompose(list_nd=self.df['uniq_bam_ids'].values),
-            )
-            self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
+            if self.sv_fpn != 'None':
+                self.console.print('======>start writing deduplicated reads to BAM...')
+                dedup_reads_write_stime = time.time()
+                self.df['uniq_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='uniq_repr_nodes'), axis=1)
+                self.aliwriter.tobam(
+                    tobam_fpn=self.sv_fpn,
+                    tmpl_bam_fpn=self.bam_fpn,
+                    whitelist=self.decompose(list_nd=self.df['uniq_bam_ids'].values),
+                )
+                self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
 
         elif self.method == 'cluster':
             dedup_umi_stime = time.time()
@@ -363,15 +365,16 @@ class dedupGene():
                 )
                 self.console.print('======>finish writing the summary statistics in {:.2f}s'.format(time.time() - dedup_sum_stat_write_stime))
 
-            self.console.print('======>start writing deduplicated reads to BAM...')
-            dedup_reads_write_stime = time.time()
-            self.df['cc_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='cc_repr_nodes'), axis=1)
-            self.aliwriter.tobam(
-                tobam_fpn=self.sv_fpn,
-                tmpl_bam_fpn=self.bam_fpn,
-                whitelist=self.decompose(list_nd=self.df['cc_bam_ids'].values),
-            )
-            self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
+            if self.sv_fpn != 'None':
+                self.console.print('======>start writing deduplicated reads to BAM...')
+                dedup_reads_write_stime = time.time()
+                self.df['cc_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='cc_repr_nodes'), axis=1)
+                self.aliwriter.tobam(
+                    tobam_fpn=self.sv_fpn,
+                    tmpl_bam_fpn=self.bam_fpn,
+                    whitelist=self.decompose(list_nd=self.df['cc_bam_ids'].values),
+                )
+                self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
 
         elif self.method == 'adjacency':
             dedup_umi_stime = time.time()
@@ -423,15 +426,16 @@ class dedupGene():
                 )
                 self.console.print('======>finish writing the summary statistics in {:.2f}s'.format(time.time() - dedup_sum_stat_write_stime))
 
-            self.console.print('======>start writing deduplicated reads to BAM...')
-            dedup_reads_write_stime = time.time()
-            self.df['adj_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='adj_repr_nodes'), axis=1)
-            self.aliwriter.tobam(
-                tobam_fpn=self.sv_fpn,
-                tmpl_bam_fpn=self.bam_fpn,
-                whitelist=self.decompose(list_nd=self.df['adj_bam_ids'].values),
-            )
-            self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
+            if self.sv_fpn != 'None':
+                self.console.print('======>start writing deduplicated reads to BAM...')
+                dedup_reads_write_stime = time.time()
+                self.df['adj_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='adj_repr_nodes'), axis=1)
+                self.aliwriter.tobam(
+                    tobam_fpn=self.sv_fpn,
+                    tmpl_bam_fpn=self.bam_fpn,
+                    whitelist=self.decompose(list_nd=self.df['adj_bam_ids'].values),
+                )
+                self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
 
         elif self.method == 'directional':
             dedup_umi_stime = time.time()
@@ -483,15 +487,16 @@ class dedupGene():
                 )
                 self.console.print('======>finish writing the summary statistics in {:.2f}s'.format(time.time() - dedup_sum_stat_write_stime))
 
-            self.console.print('======>start writing deduplicated reads to BAM...')
-            dedup_reads_write_stime = time.time()
-            self.df['direc_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='direc_repr_nodes'), axis=1)
-            self.aliwriter.tobam(
-                tobam_fpn=self.sv_fpn,
-                tmpl_bam_fpn=self.bam_fpn,
-                whitelist=self.decompose(list_nd=self.df['direc_bam_ids'].values),
-            )
-            self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
+            if self.sv_fpn != 'None':
+                self.console.print('======>start writing deduplicated reads to BAM...')
+                dedup_reads_write_stime = time.time()
+                self.df['direc_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='direc_repr_nodes'), axis=1)
+                self.aliwriter.tobam(
+                    tobam_fpn=self.sv_fpn,
+                    tmpl_bam_fpn=self.bam_fpn,
+                    whitelist=self.decompose(list_nd=self.df['direc_bam_ids'].values),
+                )
+                self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
 
         elif self.method == 'mcl':
             dedup_umi_stime = time.time()
@@ -542,15 +547,16 @@ class dedupGene():
                 )
                 self.console.print('======>finish writing the summary statistics in {:.2f}s'.format(time.time() - dedup_sum_stat_write_stime))
 
-            self.console.print('======>start writing deduplicated reads to BAM...')
-            dedup_reads_write_stime = time.time()
-            self.df['mcl_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='mcl_repr_nodes'), axis=1)
-            self.aliwriter.tobam(
-                tobam_fpn=self.sv_fpn,
-                tmpl_bam_fpn=self.bam_fpn,
-                whitelist=self.decompose(list_nd=self.df['mcl_bam_ids'].values),
-            )
-            self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
+            if self.sv_fpn != 'None':
+                self.console.print('======>start writing deduplicated reads to BAM...')
+                dedup_reads_write_stime = time.time()
+                self.df['mcl_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='mcl_repr_nodes'), axis=1)
+                self.aliwriter.tobam(
+                    tobam_fpn=self.sv_fpn,
+                    tmpl_bam_fpn=self.bam_fpn,
+                    whitelist=self.decompose(list_nd=self.df['mcl_bam_ids'].values),
+                )
+                self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
 
         elif self.method == 'mcl_val':
             dedup_umi_stime = time.time()
@@ -605,15 +611,16 @@ class dedupGene():
                 )
                 self.console.print('======>finish writing the summary statistics in {:.2f}s'.format(time.time() - dedup_sum_stat_write_stime))
 
-            self.console.print('======>start writing deduplicated reads to BAM...')
-            dedup_reads_write_stime = time.time()
-            self.df['mcl_val_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='mcl_val_repr_nodes'), axis=1)
-            self.aliwriter.tobam(
-                tobam_fpn=self.sv_fpn,
-                tmpl_bam_fpn=self.bam_fpn,
-                whitelist=self.decompose(list_nd=self.df['mcl_val_bam_ids'].values),
-            )
-            self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
+            if self.sv_fpn != 'None':
+                self.console.print('======>start writing deduplicated reads to BAM...')
+                dedup_reads_write_stime = time.time()
+                self.df['mcl_val_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='mcl_val_repr_nodes'), axis=1)
+                self.aliwriter.tobam(
+                    tobam_fpn=self.sv_fpn,
+                    tmpl_bam_fpn=self.bam_fpn,
+                    whitelist=self.decompose(list_nd=self.df['mcl_val_bam_ids'].values),
+                )
+                self.console.print('======>finish writing in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
 
         elif self.method == 'mcl_ed':
             dedup_umi_stime = time.time()
@@ -669,15 +676,16 @@ class dedupGene():
                 )
                 self.console.print('======>finish writing the summary statistics in {:.2f}s'.format(time.time() - dedup_sum_stat_write_stime))
 
-            self.console.print('======>start writing deduplicated reads to BAM...')
-            dedup_reads_write_stime = time.time()
-            self.df['mcl_ed_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='mcl_ed_repr_nodes'), axis=1)
-            self.aliwriter.tobam(
-                tobam_fpn=self.sv_fpn,
-                tmpl_bam_fpn=self.bam_fpn,
-                whitelist=self.decompose(list_nd=self.df['mcl_ed_bam_ids'].values),
-            )
-            self.console.print('======>finish writing the bam in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
+            if self.sv_fpn != 'None':
+                self.console.print('======>start writing deduplicated reads to BAM...')
+                dedup_reads_write_stime = time.time()
+                self.df['mcl_ed_bam_ids'] = self.df.apply(lambda x: self.bamids(x, by_col='mcl_ed_repr_nodes'), axis=1)
+                self.aliwriter.tobam(
+                    tobam_fpn=self.sv_fpn,
+                    tmpl_bam_fpn=self.bam_fpn,
+                    whitelist=self.decompose(list_nd=self.df['mcl_ed_bam_ids'].values),
+                )
+                self.console.print('======>finish writing the bam in {:.2f}s'.format(time.time() - dedup_reads_write_stime))
 
         # sys.stdout.close()
 

@@ -171,14 +171,14 @@ class dechimeric():
         dechimeric_write_stime = time.time()
         self.console.print('======>start writing...')
 
-        self.dirname = os.path.dirname(self.sv_fpn) + './'
-        self.console.print('=========>writing paired-UMI cnt summary file...')
-        self.gwriter.generic(
-            df=self.cnt_paired_umis.to_frame(name='cnt'),
-            sv_fpn=self.dirname + 'cnt_summary.txt',
-            header=True,
-            index=True,
-        )
+        # self.dirname = os.path.dirname(self.sv_fpn) + '/'
+        # self.console.print('=========>writing paired-UMI cnt summary file...')
+        # self.gwriter.generic(
+        #     df=self.cnt_paired_umis.to_frame(name='cnt'),
+        #     sv_fpn=self.dirname + 'cnt_summary.txt',
+        #     header=True,
+        #     index=True,
+        # )
         self.console.print('=========>writing dechimerical reads...')
         self.aliwriter.tobam(
             tobam_fpn=self.sv_fpn,
@@ -205,8 +205,8 @@ if __name__ == "__main__":
     from mclumi.Path import to
 
     umikit = dechimeric(
-        # mode='internal',
-        mode='external',
+        mode='internal',
+        # mode='external',
 
         method='dc_by_cnt',
 

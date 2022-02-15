@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5ec5f391-0433-4316-a31e-45b1a58ec0de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/format/output_format.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/format/output_format.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mclumi/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupBasic.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupBasic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupGene.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupGene.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupPos.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupPos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupSC.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/monomer/DedupSC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mclumi/deduplicate/trimer/Dechimeric.py" beforeDir="false" afterPath="$PROJECT_DIR$/mclumi/deduplicate/trimer/Dechimeric.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,7 +146,7 @@
       <workItem from="1641307202798" duration="22866000" />
       <workItem from="1642005038740" duration="619000" />
       <workItem from="1644233745132" duration="28611000" />
-      <workItem from="1644600918640" duration="22775000" />
+      <workItem from="1644600918640" duration="30968000" />
     </task>
     <servers />
   </component>
@@ -161,6 +158,6 @@
     <SUITE FILE_PATH="coverage/mclumi$Read_umitools.coverage" NAME="BundlePos Coverage Results" MODIFIED="1635381878811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/align" />
     <SUITE FILE_PATH="coverage/mclumi$DedupGene.coverage" NAME="DedupGene Coverage Results" MODIFIED="1644261366893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/deduplicate/monomer" />
     <SUITE FILE_PATH="coverage/mclumi$BundlePos.coverage" NAME="BundlePos Coverage Results" MODIFIED="1636029693541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/align" />
-    <SUITE FILE_PATH="coverage/mclumi$Dechimeric.coverage" NAME="Dechimeric Coverage Results" MODIFIED="1644618523284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/deduplicate/trimer" />
+    <SUITE FILE_PATH="coverage/mclumi$Dechimeric.coverage" NAME="Dechimeric Coverage Results" MODIFIED="1644776039589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mclumi/deduplicate/trimer" />
   </component>
 </project>
